@@ -30,14 +30,14 @@
       </div>
         <!-- <p class="mt-3 text-secondary">他のアカウントでログインする</p> -->
         <div class="mt-4">
-             <a href="#" class="btn btn-danger" role="button">
-                <i class="fab fa-google"></i>
-                Google
-            </a>
-            <a href="#" class="btn btn-primary" role="button">
-                <i class="fab fa-twitter"></i>
-                twitter
-            </a> 
+            <!-- <a href="#" class="btn btn-danger" role="button">-->
+            <!--    <i class="fab fa-google"></i>-->
+            <!--    Google-->
+            <!--</a>-->
+            <!--<a href="#" class="btn btn-primary" role="button">-->
+            <!--    <i class="fab fa-twitter"></i>-->
+            <!--    twitter-->
+            <!--</a> -->
         </div>
         <div>
         <button type="submit" class="float">Login</button>

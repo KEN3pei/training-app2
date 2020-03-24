@@ -11,13 +11,13 @@ html {
   background-size: cover;
 }
 
-body {
-  background: transparent;
+/*body {*/
+/*  background: transparent;*/
   /* background-color: rgb(245, 179, 92); */
-}
+/*}*/
 
 body, input, button {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .login {
@@ -46,6 +46,10 @@ h3{
   color: rgba(255, 255, 255, 0.94);
   padding-bottom: 5px;
   text-shadow: 1px 1px 3px #23203b;
+}
+
+.navbar-nav {
+  float: right;
 }
 
 .login form .input-group {

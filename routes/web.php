@@ -27,6 +27,11 @@ Route::post('/admin/logout', 'AuthAdmin\LoginController@logout')->name('admin_au
 Route::get('/admin/register', 'AuthAdmin\RegisterController@showRegistrationForm')->name('admin_auth.register');
 Route::post('/admin/register', 'AuthAdmin\RegisterController@register')->name('admin_auth.register');
 
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+// Route::post('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::post('/home', 'HomeController@index')->name('home');

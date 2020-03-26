@@ -8,7 +8,7 @@
     <form method="POST" action="{{ route('admin_auth.login') }}">
     @csrf
       <div class="input-group input-group-lg">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <span class="input-group-addon"><i class="fas fa-envelope-square"></i></span>
         <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email-addres" required autocomplete="email" autofocus>
         
         @error('email')

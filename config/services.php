@@ -39,5 +39,12 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_CALLBACK_URL'),
     ],
+    
+    'twitter' => [
+      'client_id'     => env('TWITTER_API_KEY'),
+      'client_secret' => env('TWITTER_API_SECRET'),
+      'redirect'      => env('TWITTER_CALLBACKURL'),
+    ],
+
 
 ];

@@ -34,7 +34,7 @@
                 <i class="fab fa-google"></i>
                 Google
             </a>
-            <a href="#" class="btn btn-primary" role="button">
+            <a href="login/twitter" class="btn btn-primary" role="button">
                 <i class="fab fa-twitter"></i>
                 twitter
             </a> 

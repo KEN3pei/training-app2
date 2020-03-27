@@ -37,39 +37,80 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:user')->except('logout');
     }
-    
-    
+    // ------------------------------------------------
+    // Googleのログイン画面へリダイレクト
+    //-------------------------------------------------
     public function redirectToGoogle()
     {
-        // Googleのログイン画面へリダイレクト
         // $x = "redirect";
         // dd($x);
         return Socialite::driver('google')->redirect();
     }
-
+    //-------------------------------------------------
+    // Googleログイン判定
+    //-------------------------------------------------
     public function handleGoogleCallback()
     {
-        // Google 認証後の処理
         //ユーザー情報を取得
         $gUser = Socialite::driver('google')->stateless()->user();
         // dd($gUser);
+        //validationをかけている
+        if($gUser->name == null){
+            return "googleアカウントにUsernameが設定されていません";
+        }
+        if($gUser->email == null){
+            return "googleアカウントにemailが設定されていません";
+        }
         //テーブルから一致するものを探す
         $user = User::where('email', $gUser->email)->first();
         // dd($user);
         if($user == null){
             //$userがなかった時の処理
-            $user = $this->createUserByGoogle($gUser);
+            $user = $this->createUserBySNS($gUser);
+            dd($user);
         }
-        Auth::login($user, true);
+        \Auth::login($user, true);
+        return redirect('/home');
+    }
+    //----------------------------------------------------
+    // Twitterのログイン画面へリダイレクト
+    //---------------------------------------------------
+    public function redirectToTwitter()
+    {
+        // $x = "redirect";
+        // dd($x);
+        return Socialite::driver('twitter')->redirect();
+    }
+    
+    //-------------------------------------------------
+    // Googleログイン判定
+    //-------------------------------------------------
+    public function handleTwitterCallback(){
+        // $x = "redirect";
+        // dd($x);
+        $gUser = Socialite::driver('twitter')->user();
+        //validationをかけている
+        if($gUser->name == null){
+            return "twitterにUsernameが設定されていません";
+        }
+        if($gUser->email == null){
+            return "twitterにemailが設定されていません";
+        }
         
-        
-        
+        $user = User::where('email', $gUser->email)->first();
+        // dd($user);
+        //$userがなかったら$gUserをもとに新しく作る
+        if($user == null){
+            $user = $this->createUserBySNS($gUser);
+            // dd($user);
+        }
+        \Auth::login($user, true);
         return redirect('/home');
     }
     
-    public function createUserByGoogle($gUser)
+    public function createUserBySNS($gUser)
     {
         
         $user = User::create([

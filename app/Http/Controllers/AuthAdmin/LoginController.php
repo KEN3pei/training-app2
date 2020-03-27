@@ -41,6 +41,12 @@ class LoginController extends Controller
     
     public function showLoginForm()
     {
+        //ログイン中userから管理者画面への侵入をここで阻止する
+        $login_now_user = Auth::user();
+        if(!$login_now_user == null){
+            return redirect('/');
+        }
+        
         return view('admin_auth.login');
     }
     

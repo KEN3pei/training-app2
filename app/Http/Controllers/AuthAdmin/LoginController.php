@@ -45,8 +45,7 @@ class LoginController extends Controller
         $login_now_user = Auth::user();
         if(!$login_now_user == null){
             return redirect('/');
-        }
-        
+        }   
         return view('admin_auth.login');
     }
     

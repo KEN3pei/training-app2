@@ -34,6 +34,7 @@ Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback')
 Route::get('login/twitter', 'Auth\LoginController@redirectToTwitter');
 Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterCallback');
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

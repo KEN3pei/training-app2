@@ -18,24 +18,24 @@ Route::get('/admin', function () {
     return redirect('/admin/login');
 });
 
-
-Route::get('/admin/home', 'AdminHomeController@index')->name('admin_auth.home');
-
-Route::get('/admin/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin_auth.login');
-Route::post('/admin/login', 'AuthAdmin\LoginController@login')->name('admin_auth.login');
-Route::post('/admin/logout', 'AuthAdmin\LoginController@logout')->name('admin_auth.logout');
-Route::get('/admin/register', 'AuthAdmin\RegisterController@showRegistrationForm')->name('admin_auth.register');
-Route::post('/admin/register', 'AuthAdmin\RegisterController@register')->name('admin_auth.register');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('home', 'AdminHomeController@index')->name('admin_auth.home');
+    Route::get('login', 'AuthAdmin\LoginController@showLoginForm')->name('admin_auth.login');
+    Route::post('login', 'AuthAdmin\LoginController@login')->name('admin_auth.login');
+    Route::post('logout', 'AuthAdmin\LoginController@logout')->name('admin_auth.logout');
+    Route::get('register', 'AuthAdmin\RegisterController@showRegistrationForm')->name('admin_auth.register');
+    Route::post('register', 'AuthAdmin\RegisterController@register')->name('admin_auth.register');
+});
 
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
-// Route::post('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
 Route::get('login/twitter', 'Auth\LoginController@redirectToTwitter');
 Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterCallback');
 
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'TrainingController@add')->name('home');
+Route::post('/home', 'TrainingController@add')->name('home');
+Route::post('/training/home', 'TrainingController@create');
 // Route::post('/home', 'HomeController@index')->name('home');

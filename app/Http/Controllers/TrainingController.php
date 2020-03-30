@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Training;
+use App\Models\User;
+use Carbon\Carbon;
 
 class TrainingController extends Controller
 {
     
     public function add(){
         
+        $auth = Auth::user();
+        $image = md5( strtolower( trim( "kensuke1202left@icloud.com " )));
+        $trainings = $this->index();
+        // dd($trainings);
+        return view('home', ['image' => $image, 'auth' => $auth, 'trainings' => $trainings]);
     }
     
     //-----------------
@@ -17,24 +25,27 @@ class TrainingController extends Controller
     //-----------------
     public function create(Request $request){
         
-        $this->validate($request, Training::$rules);
+        if($request->new_training == null){
+            return redirect()->back();
+        }
         $training = new Training;
-    
-        $form = $request->all();
-        $auth_user = Auth::user();
+        // dd($request->new_training);
+        $new_training = $request->new_training;
+        $auth_user_id = Auth::user()->id;
         $createtime = Carbon::now();
-        
-        $training->body = $form['body'];
-        $training->user_id = $auth_user;
+        // dd($createtime);
+        $training->body = $new_training;
+        $training->user_id = $auth_user_id;
         $training->date = $createtime;
+        $training->timestamps = false;
         $training->save();
         
-        return redirect('/training/home');
+        return redirect('/home');
     }
     //------------------
-    // 投稿の更新
+    // 投稿の編集
     //------------------
-    public function update(Request $request){
+    public function edit(Request $request){
         
         $this->validate($request, Training::$rules);
         $form = $request->all();
@@ -45,12 +56,23 @@ class TrainingController extends Controller
         
         return redirect('/training/home');
     }
-    
-    public function destroy(){
+    //-----------------
+    // 投稿の削除
+    //-----------------
+    public function destroy(Request $request){
         
+        $training = Training::find($request->id);
+        $training->delete();
+        
+        return redirect('/training/home');
     }
-    
-    public function training_list(){
+    //------------------
+    // 投稿の一覧を表示
+    //------------------
+    public function index(){
         
+        $trainings = Training::orderBy('date', 'desc')->get();
+        
+        return $trainings;
     }
 }

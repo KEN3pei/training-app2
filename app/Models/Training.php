@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Training extends Model
 {
@@ -14,4 +15,9 @@ class Training extends Model
     public static $rules = array(
         'body' => 'required',
     );
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

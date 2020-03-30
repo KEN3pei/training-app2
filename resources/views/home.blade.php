@@ -5,8 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8 bg-primary">
             <div>
-                <img src="https://www.gravatar.com/avatar/{{ $image }}" >
-                <p>{{ $auth->name }}</p>
+                    <img src="https://www.gravatar.com/avatar/{{ $image }}" >
+                    <p>{{ $auth->name }}</p>
+                @if(!$auth_training == null)
+                    <p>{{ $auth_training->body }}</p>
+                    <p>{{ $auth_training->date }}</p>
+                @else
+                    <p>投稿はありません</p>
+                @endif
+                    <form action="{{ action('TrainingController@edit') }}" method="post" enctype="multipart/form-data">
+                        <input type="text" name="edit">
+                        <input type="submit" value="編集">
+                        @csrf
+                    </form>
             </div>
             <div>
                 <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">
@@ -28,6 +39,10 @@
                         <li>
                             <p>{{ $training->user->name }}</p>
                             <p>{{ $training->body }}</p>
+                            <form action="{{ action('TrainingController@delete', ['id' => $training->id]) }}" method="post" enctype="multipart/form-data">
+                                <input type="submit" value="削除">
+                                @csrf
+                            </form>
                         </li>
                     @endforeach
                 @endif

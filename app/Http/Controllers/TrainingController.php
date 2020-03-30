@@ -14,10 +14,23 @@ class TrainingController extends Controller
     public function add(){
         
         $auth = Auth::user();
-        $image = md5( strtolower( trim( "kensuke1202left@icloud.com " )));
+        $auth_email = $auth->email;
+        $image = md5( strtolower( trim( "$auth_email " )));
         $trainings = $this->index();
-        // dd($trainings);
-        return view('home', ['image' => $image, 'auth' => $auth, 'trainings' => $trainings]);
+        
+        if($trainings->count() == 0){
+            $auth_training = null;
+        }else{
+            //ログインユーザーのもつ最新の投稿を取得している
+            foreach($trainings as $training){
+                if($training->user_id == $auth->id){
+                    $auth_training = $training;
+                    break;
+                }
+            }
+        }
+        // dd($auth_training);
+        return view('home', ['image' => $image, 'auth_training' => $auth_training, 'trainings' => $trainings, 'auth' => $auth]);
     }
     
     //-----------------
@@ -47,32 +60,35 @@ class TrainingController extends Controller
     //------------------
     public function edit(Request $request){
         
-        $this->validate($request, Training::$rules);
-        $form = $request->all();
+        // $this->validate($request, Training::$rules);
+        dd($request);
+        $form = $request->body;
         $training_update = Training::where(id, $request->id)->get();
         
-        $training_update->body = $form['body'];
+        $training_update->body = $form;
         $training_update->save();
         
-        return redirect('/training/home');
+        return redirect('/home');
     }
     //-----------------
     // 投稿の削除
     //-----------------
-    public function destroy(Request $request){
+    public function delete(Request $request){
         
         $training = Training::find($request->id);
         $training->delete();
         
-        return redirect('/training/home');
+        return redirect('/home');
     }
+    
     //------------------
     // 投稿の一覧を表示
     //------------------
     public function index(){
-        
+        //日付で降順に並び変えている
         $trainings = Training::orderBy('date', 'desc')->get();
-        
+        // dd($count);
         return $trainings;
     }
+    
 }

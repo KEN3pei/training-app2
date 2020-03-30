@@ -38,4 +38,6 @@ Auth::routes();
 Route::get('/home', 'TrainingController@add')->name('home');
 Route::post('/home', 'TrainingController@add')->name('home');
 Route::post('/training/home', 'TrainingController@create');
+Route::post('/training/home/edit', 'TrainingController@edit');
+Route::post('/training/home/delete', 'TrainingController@delete');
 // Route::post('/home', 'HomeController@index')->name('home');

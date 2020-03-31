@@ -10,14 +10,14 @@
                 @if(!$auth_training == null)
                     <p>{{ $auth_training->body }}</p>
                     <p>{{ $auth_training->date }}</p>
-                @else
-                    <p>投稿はありません</p>
-                @endif
-                    <form action="{{ action('TrainingController@edit') }}" method="post" enctype="multipart/form-data">
-                        <input type="text" name="edit">
+                    <form action="{{ action('TrainingController@edit', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
+                        <input type="text" name="body">
                         <input type="submit" value="編集">
                         @csrf
                     </form>
+                @else
+                    <p>投稿はありません</p>
+                @endif
             </div>
             <div>
                 <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">

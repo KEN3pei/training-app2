@@ -18,18 +18,13 @@ class TrainingController extends Controller
         $image = md5( strtolower( trim( "$auth_email " )));
         $trainings = $this->index();
         
-        if($trainings->count() == 0){
-            $auth_training = null;
-        }else{
-            //ログインユーザーのもつ最新の投稿を取得している
-            foreach($trainings as $training){
-                if($training->user_id == $auth->id){
-                    $auth_training = $training;
-                    break;
-                }
-            }
-        }
+        $today = substr(Carbon::today(), 0, 10);
+        $auth_training = Training::where("user_id", $auth->id)->where("date", 'LIKE', "%{$today}%")->first();
         // dd($auth_training);
+        // image = Gravatarの自分のimage
+        // auth_training = ログインユーザーの最新の投稿
+        // trainings = 全ての投稿を降順に並べたもの
+        // auth = ログインユーザーの情報
         return view('home', ['image' => $image, 'auth_training' => $auth_training, 'trainings' => $trainings, 'auth' => $auth]);
     }
     
@@ -60,12 +55,13 @@ class TrainingController extends Controller
     //------------------
     public function edit(Request $request){
         
-        // $this->validate($request, Training::$rules);
-        dd($request);
+        $this->validate($request, Training::$rules);
+        // dd($request->id);
         $form = $request->body;
-        $training_update = Training::where(id, $request->id)->get();
-        
+        $training_update = Training::find($request->id);
+        // dd($training);
         $training_update->body = $form;
+        $training_update->timestamps = false;
         $training_update->save();
         
         return redirect('/home');

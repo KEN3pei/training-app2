@@ -7859,6 +7859,7 @@ a.text-dark:focus, a.text-dark:hover {
   }
 }
 
+/*この先追加css*/
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
@@ -7874,4 +7875,23 @@ a.text-dark:focus, a.text-dark:hover {
   list-style: none;
   display: inline-block;
   font-size: 28px;
+}
+ @media (max-width:768px){
+   .second-contents {
+      height: 200px;
+    }
+    .height-fixed {
+      height: 20vh;
+    }
+    .scroll {
+      overflow-y: auto;
+    }
+ }
+@media (min-width:768px){
+    .height-fixed {
+      height: 75vh;
+    }
+    .scroll {
+      overflow-y: auto;
+    }
 }

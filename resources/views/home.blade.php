@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 bg-primary">
+        <div class="col-md-8">
             <div>
                     <img src="https://www.gravatar.com/avatar/{{ $image }}" >
                     <p>{{ $auth->name }}</p>
@@ -27,13 +27,14 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-4 bg-secondary">
+        <div class="col-md-4 bg-secondary second-contents">
             <div>
                 <form>
                     <input type=text>
                 </form>
             </div>
-            <div>
+            <div class="row height-fixed scroll">
+            <div class="col-12">
                 @if(isset($trainings))
                     @foreach($trainings as $training)
                         <li>
@@ -46,6 +47,7 @@
                         </li>
                     @endforeach
                 @endif
+            </div>
             </div>
         </div>
     </div>

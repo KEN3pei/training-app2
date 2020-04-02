@@ -27,17 +27,19 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('register', 'AuthAdmin\RegisterController@register')->name('admin_auth.register');
 });
 
-Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
-Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
-
-Route::get('login/twitter', 'Auth\LoginController@redirectToTwitter');
-Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterCallback');
+Route::group(['prefix' => 'login'], function() {
+    Route::get('google', 'Auth\LoginController@redirectToGoogle');
+    Route::get('google/callback', 'Auth\LoginController@handleGoogleCallback');
+    Route::get('twitter', 'Auth\LoginController@redirectToTwitter');
+    Route::get('twitter/callback', 'Auth\LoginController@handleTwitterCallback');
+});
 
 Auth::routes();
 
 Route::get('/home', 'TrainingController@add')->name('home');
 Route::post('/home', 'TrainingController@add')->name('home');
-Route::post('/training/home', 'TrainingController@create');
+Route::post('/training/home/create', 'TrainingController@create');
 Route::post('/training/home/edit', 'TrainingController@edit');
 Route::post('/training/home/delete', 'TrainingController@delete');
+
 // Route::post('/home', 'HomeController@index')->name('home');

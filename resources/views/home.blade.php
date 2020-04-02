@@ -26,6 +26,20 @@
                     @csrf
                 </form>
             </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>日</th>
+                        <th>月</th>
+                        <th>火</th>
+                        <th>水</th>
+                        <th>木</th>
+                        <th>金</th>
+                        <th>土</th>
+                    </tr>
+                    
+                </table>
+            </div>
         </div>
         <div class="col-md-4 bg-secondary second-contents">
             <div>

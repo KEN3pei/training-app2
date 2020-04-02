@@ -10,7 +10,9 @@ use Carbon\Carbon;
 
 class TrainingController extends Controller
 {
-    
+    // -----------------
+    // ログイン時に表示するもの
+    //------------------
     public function add(){
         
         $auth = Auth::user();
@@ -18,13 +20,12 @@ class TrainingController extends Controller
         $image = md5( strtolower( trim( "$auth_email " )));
         $trainings = $this->index();
         
+        // 今後日付に合わせた投稿を表示したいのでとりあえず今日という日で取得することにした
         $today = substr(Carbon::today(), 0, 10);
         $auth_training = Training::where("user_id", $auth->id)->where("date", 'LIKE', "%{$today}%")->first();
         // dd($auth_training);
-        // image = Gravatarの自分のimage
-        // auth_training = ログインユーザーの最新の投稿
-        // trainings = 全ての投稿を降順に並べたもの
-        // auth = ログインユーザーの情報
+        
+        //様々な値を表示させようとするとviewに渡す変数が増えてしまい整理できない
         return view('home', ['image' => $image, 'auth_training' => $auth_training, 'trainings' => $trainings, 'auth' => $auth]);
     }
     
@@ -42,6 +43,7 @@ class TrainingController extends Controller
         $auth_user_id = Auth::user()->id;
         $createtime = Carbon::now();
         // dd($createtime);
+        // カリキュラムではfillを使ってから保存しているがそれが適切なのかわからないため直接代入している
         $training->body = $new_training;
         $training->user_id = $auth_user_id;
         $training->date = $createtime;
@@ -81,7 +83,7 @@ class TrainingController extends Controller
     // 投稿の一覧を表示
     //------------------
     public function index(){
-        //日付で降順に並び変えている
+        
         $trainings = Training::orderBy('date', 'desc')->get();
         // dd($count);
         return $trainings;

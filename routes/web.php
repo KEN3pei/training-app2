@@ -43,3 +43,7 @@ Route::post('/training/home/edit', 'TrainingController@edit');
 Route::post('/training/home/delete', 'TrainingController@delete');
 
 // Route::post('/home', 'HomeController@index')->name('home');
+
+// Route::group(['prefix' => 'calendar'], function() {
+    Route::get('/home?y_m_d=2020-03', 'CalendarController@lt');
+// });

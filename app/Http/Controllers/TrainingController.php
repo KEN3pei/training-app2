@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Training;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Http\Controllers\CalendarController;
 
 class TrainingController extends Controller
 {
@@ -15,18 +16,43 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
+        $calendar_c = app()->make('App\Http\Controllers\CalendarController');
+        $month = $calendar_c->getMonth();
+        $weeks = $calendar_c->calendar($month);
+        
         $auth = Auth::user();
         $auth_email = $auth->email;
         $image = md5( strtolower( trim( "$auth_email " )));
+        
         $trainings = $this->index();
-        
-        // 今後日付に合わせた投稿を表示したいのでとりあえず今日という日で取得することにした
-        $today = substr(Carbon::today(), 0, 10);
-        $auth_training = Training::where("user_id", $auth->id)->where("date", 'LIKE', "%{$today}%")->first();
-        // dd($auth_training);
-        
+        $auth_training = $this->get_today_training($month);
         //様々な値を表示させようとするとviewに渡す変数が増えてしまい整理できない
-        return view('home', ['image' => $image, 'auth_training' => $auth_training, 'trainings' => $trainings, 'auth' => $auth]);
+        return view('home', [
+            'image' => $image, 
+            'auth_training' => $auth_training, 
+            'trainings' => $trainings, 
+            'auth' => $auth,
+            'month' => $month,
+            'weeks' => $weeks
+            ]);
+    }
+    
+    // ----------------------
+    // カレンダーの日付ごとの投稿を取得
+    // ----------------------
+    public function get_today_training($month) {
+        
+        if(isset($_GET['today'])){
+            $get = $_GET['today'];
+            $day = sprintf('%02d', $get);
+            $today = $month ."-". $day;
+        }else{
+            $today = substr(Carbon::today(), 0, 10);
+        }
+        $auth = Auth::user();
+        $auth_training = Training::where("user_id", $auth->id)->where("date", 'LIKE', "%{$today}%")->first();
+        
+        return $auth_training;
     }
     
     //-----------------

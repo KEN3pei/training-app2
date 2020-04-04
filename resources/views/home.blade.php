@@ -26,18 +26,23 @@
                     @csrf
                 </form>
             </div>
-            <div>
+            <div id="calendar">
+                <a href="?date={{ $month }}&method=submonth">&lt;</a>
+                <b>{{ $month }}</b>
+                <a href="?date={{ $month }}&method=addmonth">&gt;</a>
                 <table>
                     <tr>
-                        <th>日</th>
-                        <th>月</th>
-                        <th>火</th>
-                        <th>水</th>
-                        <th>木</th>
-                        <th>金</th>
-                        <th>土</th>
+                        <th class="week text-center">日</th>
+                        <th class="week text-center">月</th>
+                        <th class="week text-center">火</th>
+                        <th class="week text-center">水</th>
+                        <th class="week text-center">木</th>
+                        <th class="week text-center">金</th>
+                        <th class="week text-center">土</th>
                     </tr>
-                    
+                    @foreach($weeks as $week)
+                        {!! $week !!}
+                    @endforeach
                 </table>
             </div>
         </div>

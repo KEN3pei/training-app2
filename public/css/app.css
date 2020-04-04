@@ -7876,6 +7876,16 @@ a.text-dark:focus, a.text-dark:hover {
   display: inline-block;
   font-size: 28px;
 }
+
+#calendar {
+  width: 100%;
+  text-align: center;
+}
+#calendar>table{
+  width: 100%;
+  text-align: center;
+}
+
  @media (max-width:768px){
    .second-contents {
       height: 200px;

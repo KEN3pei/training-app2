@@ -7,15 +7,6 @@ use Carbon\Carbon;
 
 class CalendarController extends Controller
 {
-    //--------------------
-    // 値をviewに渡す
-    //--------------------
-    public function add () {
-        
-        
-        
-        return $year_month;
-    }
     
     //-------------------
     // 各月のカレンダー

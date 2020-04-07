@@ -7,15 +7,6 @@ use Carbon\Carbon;
 
 class CalendarController extends Controller
 {
-    //--------------------
-    // 値をviewに渡す
-    //--------------------
-    public function add () {
-        
-        
-        
-        return $year_month;
-    }
     
     //-------------------
     // 各月のカレンダー
@@ -24,7 +15,6 @@ class CalendarController extends Controller
         
         $first_month_day = $month . '-01';
         $today = Carbon::parse($first_month_day);
-        // $today = new Carbon\Carbon('2020-04');
         $daysInMonth = $today->daysInMonth;
         $dayOfWeek = $today->dayOfWeek;
         // dd($dayOfWeek);
@@ -32,9 +22,16 @@ class CalendarController extends Controller
         // dd($week);
         $n = 7 - $dayOfWeek;
         $day = 1;
-    
         for($v=$day; $v<$daysInMonth + 1; $v++){
-            $week .= '<td><a href="?today=' .$day. '">' .$day. '</a></td>';
+            $d = sprintf('%02d', $day);
+            $y_m_d = $month ."-". $d;
+            $c = substr(Carbon::now(), 0, 10);
+            if($y_m_d === $c){
+                // dd($y_m_d);
+                $week .= '<td><a href="?today=' .$y_m_d. '" class="calendar-today">' .$day. '</a></td>';
+            }else{
+                $week .= '<td><a href="?today=' .$y_m_d. '">' .$day. '</a></td>';
+            }
             if(($dayOfWeek + $day)%7 == 0 ){
                 $weeks[] = '<tr>'.$week.'</tr>';
                 $week = "";

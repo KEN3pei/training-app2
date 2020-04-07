@@ -16,16 +16,24 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
+        // $user = User::find(1)->trainings;
+        // // foreach ($user->trainings as $training) {
+        // //     dd($training);
+        // // }
+        // dd($user);
+        
         $calendar_c = app()->make('App\Http\Controllers\CalendarController');
         $month = $calendar_c->getMonth();
         $weeks = $calendar_c->calendar($month);
-        
         $auth = Auth::user();
         $auth_email = $auth->email;
         $image = md5( strtolower( trim( "$auth_email " )));
         
         $trainings = $this->index();
         $auth_training = $this->get_today_training($month);
+        
+        $now = substr(Carbon::now(), 0, 7);
+        // dd($now);
         //様々な値を表示させようとするとviewに渡す変数が増えてしまい整理できない
         return view('home', [
             'image' => $image, 
@@ -33,7 +41,8 @@ class TrainingController extends Controller
             'trainings' => $trainings, 
             'auth' => $auth,
             'month' => $month,
-            'weeks' => $weeks
+            'weeks' => $weeks,
+            'now' => $now
             ]);
     }
     
@@ -43,9 +52,7 @@ class TrainingController extends Controller
     public function get_today_training($month) {
         
         if(isset($_GET['today'])){
-            $get = $_GET['today'];
-            $day = sprintf('%02d', $get);
-            $today = $month ."-". $day;
+            $today = $_GET['today'];
         }else{
             $today = substr(Carbon::today(), 0, 10);
         }

@@ -42,4 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Training');
     }
+    
+    //中間テーブルおためし
+    public function trainings()
+    {
+        return $this->belongsToMany('App\Models\Training', 'comments');
+    }
 }

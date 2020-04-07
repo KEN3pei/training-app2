@@ -61,13 +61,15 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: Nunito, sans-serif;
+  /*font-family: Nunito, sans-serif;*/
+  font-family: Lato, "Hiragino Maru Gothic Pro", "Meiryo UI", Meiryo, "MS PGothic", sans-serif !important;
   font-size: .9rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc
+  background-color: #f8fafc;
+  /*height: 100vh;*/
 }
 
 [tabindex="-1"]:focus {
@@ -512,6 +514,7 @@ pre code {
 
 .container {
   width: 100%;
+  /*height: 100vh;*/
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -7860,6 +7863,17 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 /*この先追加css*/
+li {
+  list-style: none;
+}
+
+.training-contents {
+  background-color: #C0C0C0;
+}
+#home-container {
+  background-color: #fff;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
@@ -7876,16 +7890,43 @@ a.text-dark:focus, a.text-dark:hover {
   display: inline-block;
   font-size: 28px;
 }
-
 #calendar {
   width: 100%;
   text-align: center;
 }
 #calendar>table{
-  width: 100%;
+  margin: 0 auto;
+  width: 90%;
   text-align: center;
+  position: relative;
 }
-
+table tr{
+  border-bottom: 1px solid #808080;
+}
+table a{
+  display: block;
+  color: #808080;
+}
+table a:hover {
+  background-color: #F4A460;
+  cursor: pointer;
+}
+.calendar-today {
+  background-color: #F4A460;
+}
+.updatetime {
+  display: inline-block;
+}
+.today-comment {
+  font-size: 22px;
+}
+.traininglist-section {
+  border-bottom: 1px solid #808080;
+}
+ /*comment_list.blade.phpのレイアウト*/
+.comment_container{
+  background-color: #fff;
+}
  @media (max-width:768px){
    .second-contents {
       height: 200px;

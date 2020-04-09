@@ -17,9 +17,10 @@ class CommentController extends Controller
     public function index() {
         
         $get = $_GET['id'];
-        // dd($get);
+        $training = Training::find($get);
+        // dd($training);
         
-        return view('comment');
+        return view('comment', ['training' => $training]);
     }
     // -------------------------
     // コメント作成機能
@@ -42,10 +43,7 @@ class CommentController extends Controller
         $comment->timestamps = false;
         $comment->save();
         
-        return redirect('/home');
+        return back();
     }
     
-    public function count() {
-        
-    }
 }

@@ -11,7 +11,14 @@ class CommentController extends Controller
 {
     public function add() {
         
-        return view('comment_list');
+        $get = $_GET['id'];
+        $training = Training::find($get);
+        foreach($training->users as $user){
+            $comments[] = $user->pivot->body;
+        }
+        // dd($comments);
+        
+        return view('comment_list', ['training' => $training, 'comments' => $comments]);
     }
     
     // -------------------------

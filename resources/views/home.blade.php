@@ -6,31 +6,40 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div id="training-section1">
-                <div class="t-contents">
+                <div>
                     <div>
-                    <a href="?date={{ $month }}&method=submonth">&lt;</a>
-                    <b>{{ $month }}</b>
-                    @if(!($month == $now))
-                    <a href="?date={{ $month }}&method=addmonth">&gt;</a>
-                    @endif
+                        <a href="?date={{ $month }}&method=submonth">&lt;</a>
+                        <b>{{ $month }}</b>
+                        @if(!($month == $now))
+                        <a href="?date={{ $month }}&method=addmonth">&gt;</a>
+                        @endif
                     </div>
-                        <img src="https://www.gravatar.com/avatar/{{ $image }}" >
-                        <p>{{ $auth->name }}</p>
+                    <div class="t-contents">
+                        <img src="https://www.gravatar.com/avatar/{{ $image }}">
+                        <div class="d-inline-block">
+                            <p>{{ $auth->name }}</p>
                     @if(!$auth_training == null)
-                        <p>{{ $auth_training->body }}</p>
-                        <p class="updatetime">{{ $auth_training->date }}</p>
-                        <a href="/training/home/commentlist" class="today-comment pl-4"><i class="far fa-comment"></i></a>
-                        <form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
-                            <input type="submit" value="削除">
-                            @csrf
-                        </form>
+                            <p>{{ $auth_training->body }}</p>
+                        </div>
+                        <p></p>
+                        <div class="float-right">
+                            <p class="updatetime">{{ $auth_training->date }}</p>
+                            <a href="/training/commentlist?id={{ $auth_training->id }}" class="today-comment pl-4"><i class="far fa-comment"></i></a>
+                            <form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
+                                <input type="submit" value="削除">
+                                @csrf
+                            </form>
+                        </div>   
+                    </div>    
                         <form action="{{ action('TrainingController@edit', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
                             <input type="text" name="body">
                             <input type="submit" value="編集">
                             @csrf
                         </form>
                     @else
-                        <p>投稿はありません</p>
+                            <p>投稿はありません</p>
+                        </div>
+                    </div>    
                     @endif
                 </div>
                 <!--<div>-->
@@ -41,7 +50,7 @@
                 <!--    </form>-->
                 <!--</div>-->
             </div>
-            <div id="calendar">
+            <div id="calendar" class="mt-2 mb-4">
                 <a href="?date={{ $month }}&method=submonth">&lt;</a>
                 <b>{{ $month }}</b>
                 @if(!($month == $now))

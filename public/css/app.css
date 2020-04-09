@@ -7890,6 +7890,10 @@ li {
   display: inline-block;
   font-size: 28px;
 }
+.t-contents {
+  width: 80%;
+  margin: 0 auto;
+}
 #calendar {
   width: 100%;
   text-align: center;
@@ -7902,6 +7906,12 @@ li {
 }
 table tr{
   border-bottom: 1px solid #808080;
+}
+table th{
+  padding: 10px 0;
+}
+table td a{
+  padding: 10px 0;
 }
 table a{
   display: block;
@@ -7954,9 +7964,6 @@ table a:hover {
 input[type="submit"] {
   text-align: center;
   box-sizing: border-box;
-  /*display: block;*/
-  /*max-width: 200px;*/
-  /*width: 100%;*/
   margin: 0 auto;
   background: #F4A460;
   color: #fff;
@@ -7968,16 +7975,6 @@ input[type="submit"] {
 input[type="submit"]:hover {
   animation: 1s flash;
 }
-/*input[type="submit"]:active {*/
-/*  border-bottom-width: 0;*/
-/*    margin-top: 5px;*/
-/*    background: #ff9300;*/
-/*}*/
-/*input[type="submit"]:focus {*/
-/*  border-bottom-width: 0;*/
-/*    margin-top: 5px;*/
-/*    background: #ff9300;*/
-/*}*/
 
  @media (max-width:768px){
    .second-contents {

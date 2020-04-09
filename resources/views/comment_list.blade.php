@@ -7,6 +7,9 @@
             <div class="section">
                 <p>Content</p>
                 <!--自分の投稿へのコメント一覧を表示-->
+                @foreach($comments as $comment)
+                    <li>{{ $comment }}</li>
+                @endforeach
             </div>
         </div>
     </div>

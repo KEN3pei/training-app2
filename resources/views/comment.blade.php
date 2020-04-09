@@ -25,7 +25,7 @@
                                 <li class="mb-4">
                                     <p class="d-inline-block">{{ $comment->body }}</p>
                                     @if($comment->user_id == $auth->id)
-                                    <form class="d-inline-block ml-4" action="{{ action('CommentController@delete', ['id' => $comment->id]) }}" method="post" enctype="multipart/form-data">
+                                    <form class="d-inline-block ml-4 float-right" action="{{ action('CommentController@delete', ['id' => $comment->id]) }}" method="post" enctype="multipart/form-data">
                                         <input type="submit" value="削除">
                                         @csrf
                                     </form>

@@ -22,8 +22,12 @@
                         <div>
                             <!--コメントの一覧を表示-->
                             @foreach($comments as $comment)
-                                <li>
-                                    <p>{{ $comment->body }}</p>
+                                <li class="mb-4">
+                                    <p class="d-inline-block">{{ $comment->body }}</p>
+                                    <form class="d-inline-block ml-4" action="{{ action('CommentController@delete', ['id' => $comment->id]) }}" method="post" enctype="multipart/form-data">
+                                        <input type="submit" value="削除">
+                                        @csrf
+                                    </form>
                                 </li>
                             @endforeach
                         </div>

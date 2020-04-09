@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Training;
 use App\Models\User;
+use App\Models\Comment;
 use Carbon\Carbon;
 use App\Http\Controllers\CalendarController;
 
@@ -108,7 +109,11 @@ class TrainingController extends Controller
         
         $training = Training::find($request->id);
         $training->delete();
-        
+        $comments = Comment::where("training_id", $request->id)->get();
+        foreach($comments as $comment){
+            $comment->delete();
+        }
+        // dd($comments);
         return redirect('/home');
     }
     

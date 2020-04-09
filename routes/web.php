@@ -49,3 +49,5 @@ Route::get('/training/commentlist', 'CommentController@add');
 Route::post('/training/commentlist', 'CommentController@add');
 Route::get('/training/comment/create', 'CommentController@create');
 Route::post('/training/comment/create', 'CommentController@create');
+Route::get('/training/comment/delete', 'CommentController@delete');
+Route::post('/training/comment/delete', 'CommentController@delete');

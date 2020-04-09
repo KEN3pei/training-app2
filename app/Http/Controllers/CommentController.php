@@ -22,7 +22,7 @@ class CommentController extends Controller
         $get = $_GET['id'];
         $training = Training::find($get);
         $comments = $this->all_comment($get);
-        // dd($comments);
+        // dd($get);
         
         return view('comment', ['training' => $training, 'comments' => $comments]);
     }
@@ -51,13 +51,25 @@ class CommentController extends Controller
     }
     
     // -------------------------------
-    // コメントの一覧表示
+    // コメント一覧表示
     // -------------------------------
     public function all_comment($get) {
         
         $comments = Comment::where('training_id', $get)->get();
         
         return $comments;
+    }
+    
+    //---------------------------------
+    // コメント削除
+    // --------------------------------
+    public function delete(Request $request) {
+        
+        $comment = Comment::find($request->id);
+        $comment->delete();
+        // dd($comment);
+        
+        return back();
     }
     
 }

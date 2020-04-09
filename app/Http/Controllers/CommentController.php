@@ -14,13 +14,17 @@ class CommentController extends Controller
         return view('comment_list');
     }
     
+    // -------------------------
+    // コメント画面表示
+    // -------------------------
     public function index() {
         
         $get = $_GET['id'];
         $training = Training::find($get);
-        // dd($training);
+        $comments = $this->all_comment($get);
+        // dd($comments);
         
-        return view('comment', ['training' => $training]);
+        return view('comment', ['training' => $training, 'comments' => $comments]);
     }
     // -------------------------
     // コメント作成機能
@@ -44,6 +48,16 @@ class CommentController extends Controller
         $comment->save();
         
         return back();
+    }
+    
+    // -------------------------------
+    // コメントの一覧表示
+    // -------------------------------
+    public function all_comment($get) {
+        
+        $comments = Comment::where('training_id', $get)->get();
+        
+        return $comments;
     }
     
 }

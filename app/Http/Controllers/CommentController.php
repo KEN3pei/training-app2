@@ -13,6 +13,14 @@ class CommentController extends Controller
         
         return view('comment_list');
     }
+    
+    public function index() {
+        
+        $get = $_GET['id'];
+        // dd($get);
+        
+        return view('comment');
+    }
     // -------------------------
     // コメント作成機能
     // -------------------------

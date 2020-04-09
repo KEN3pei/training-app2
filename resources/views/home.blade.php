@@ -73,34 +73,9 @@
                             <p>{{ $training->user->name }}</p>
                             <p>{{ $training->body }}</p>
                             <p class="d-inline-block">{{ $training->date }}</p>
-                            <!--modal-->
-                            <a href="" data-toggle="modal" data-target="#exampleModal" class="today-comment ml-4"><i class="far fa-comment"></i></a>
+                            
+                            <a href="/training/comment?id={{ $training->id }}" class="today-comment ml-4"><i class="far fa-comment"></i></a>
                             <!--{{ $training->id }}    -->
-                                <!-- モーダルの設定 -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{ $auth->name }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      
-                                      <form action="{{ action('CommentController@create', ['id' => $training->id ]) }}" method="post" enctype="multipart/form-data">
-                                          <div class="modal-body">
-                                            <textarea type="text" rows="4" name="body"></textarea>
-                                          </div>
-                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                                            <button type="submit" form="create-comment" class="btn btn-primary">コメント</button>
-                                          </div><!-- /.modal-footer -->
-                                          @csrf
-                                      </form>
-                                    </div><!-- /.modal-content -->
-                                  </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-                                
                             <form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $training->id]) }}" method="post" enctype="multipart/form-data">
                                 <input type="submit" value="削除">
                                 @csrf

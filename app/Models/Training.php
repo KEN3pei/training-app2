@@ -21,8 +21,9 @@ class Training extends Model
         return $this->belongsTo('App\Models\User');
     }
     
+    //中間テーブル
     public function users()
     {
-        return $this->belongsToMany('App\Models\User', 'comments');
+        return $this->belongsToMany('App\Models\User', 'comments')->withPivot('body');
     }
 }

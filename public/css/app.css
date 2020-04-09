@@ -7950,6 +7950,35 @@ table a:hover {
   margin: 15px 0;
   width: 90%;
 }
+
+input[type="submit"] {
+  text-align: center;
+  box-sizing: border-box;
+  /*display: block;*/
+  /*max-width: 200px;*/
+  /*width: 100%;*/
+  margin: 0 auto;
+  background: #F4A460;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 10px 8px;
+  border-radius: 5px;
+  /*border-bottom: 5px solid rgba(0,0,0,0.3);*/
+}
+input[type="submit"]:hover {
+  animation: 1s flash;
+}
+/*input[type="submit"]:active {*/
+/*  border-bottom-width: 0;*/
+/*    margin-top: 5px;*/
+/*    background: #ff9300;*/
+/*}*/
+/*input[type="submit"]:focus {*/
+/*  border-bottom-width: 0;*/
+/*    margin-top: 5px;*/
+/*    background: #ff9300;*/
+/*}*/
+
  @media (max-width:768px){
    .second-contents {
       height: 200px;

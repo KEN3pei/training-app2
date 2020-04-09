@@ -9,8 +9,8 @@
                 <div class="comment-area row">
                     <div class="col-md-6">
                         <div class="tr-user">
-                        <p>{{ $training->user->name }}</p>
-                        <p>{{ $training->body }}</p>
+                        <p>Name :  　　　　{{ $training->user->name }}</p>
+                        <p>投稿 :　　　　　{{ $training->body }}</p>
                         </div>
                         <form action="{{ action('CommentController@create', ['id' => $training->id]) }}" method="post" enctype="multipart/form-data">
                             <textarea type="text" row="4" name="body"></textarea>
@@ -24,10 +24,12 @@
                             @foreach($comments as $comment)
                                 <li class="mb-4">
                                     <p class="d-inline-block">{{ $comment->body }}</p>
+                                    @if($comment->user_id == $auth->id)
                                     <form class="d-inline-block ml-4" action="{{ action('CommentController@delete', ['id' => $comment->id]) }}" method="post" enctype="multipart/form-data">
                                         <input type="submit" value="削除">
                                         @csrf
                                     </form>
+                                    @endif
                                 </li>
                             @endforeach
                         </div>

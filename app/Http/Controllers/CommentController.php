@@ -22,9 +22,10 @@ class CommentController extends Controller
         $get = $_GET['id'];
         $training = Training::find($get);
         $comments = $this->all_comment($get);
-        // dd($get);
+        $auth = Auth::user();
+        // dd($comments);
         
-        return view('comment', ['training' => $training, 'comments' => $comments]);
+        return view('comment', ['training' => $training, 'comments' => $comments, 'auth' => $auth]);
     }
     // -------------------------
     // コメント作成機能

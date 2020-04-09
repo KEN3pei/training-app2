@@ -6,6 +6,7 @@
         <div class="container comment_container">
             <div class="section">
                 <p>Content</p>
+                <!--自分の投稿へのコメント一覧を表示-->
             </div>
         </div>
     </div>

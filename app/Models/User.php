@@ -46,6 +46,6 @@ class User extends Authenticatable
     //中間テーブルおためし
     public function trainings()
     {
-        return $this->belongsToMany('App\Models\Training', 'comments');
+        return $this->belongsToMany('App\Models\Training', 'comments')->withPivot('body');
     }
 }

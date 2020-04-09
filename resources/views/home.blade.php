@@ -20,6 +20,10 @@
                         <p>{{ $auth_training->body }}</p>
                         <p class="updatetime">{{ $auth_training->date }}</p>
                         <a href="/training/home/commentlist" class="today-comment pl-4"><i class="far fa-comment"></i></a>
+                        <form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
+                            <input type="submit" value="削除">
+                            @csrf
+                        </form>
                         <form action="{{ action('TrainingController@edit', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
                             <input type="text" name="body">
                             <input type="submit" value="編集">
@@ -29,13 +33,13 @@
                         <p>投稿はありません</p>
                     @endif
                 </div>
-                <div>
-                    <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">
-                        <input type="text" name="new_training">
-                        <input type="submit" value="投稿">
-                        @csrf
-                    </form>
-                </div>
+                <!--<div>-->
+                <!--    <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">-->
+                <!--        <input type="text" name="new_training">-->
+                <!--        <input type="submit" value="投稿">-->
+                <!--        @csrf-->
+                <!--    </form>-->
+                <!--</div>-->
             </div>
             <div id="calendar">
                 <a href="?date={{ $month }}&method=submonth">&lt;</a>
@@ -58,6 +62,13 @@
                     @endforeach
                 </table>
             </div>
+            <div>
+                <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">
+                    <input type="text" name="new_training">
+                    <input type="submit" value="投稿">
+                    @csrf
+                </form>
+            </div>
         </div>
         <div class="col-md-4 second-contents">
             <div>
@@ -76,10 +87,10 @@
                             
                             <a href="/training/comment?id={{ $training->id }}" class="today-comment ml-4"><i class="far fa-comment"></i></a>
                             <!--{{ $training->id }}    -->
-                            <form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $training->id]) }}" method="post" enctype="multipart/form-data">
-                                <input type="submit" value="削除">
-                                @csrf
-                            </form>
+                            <!--<form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $training->id]) }}" method="post" enctype="multipart/form-data">-->
+                            <!--    <input type="submit" value="削除">-->
+                            <!--    @csrf-->
+                            <!--</form>-->
                         </li>
                     @endforeach
                 @endif

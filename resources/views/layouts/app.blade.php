@@ -83,19 +83,13 @@
                                 </form>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/home">
-                                    <i class="fas fa-home nav-icons"></i>
-                                </a>
+                                <a class="nav-link" href="/home"><i class="fas fa-home nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="far fa-address-book nav-icons"></i>
-                                </a>
+                                <a class="nav-link" href="#"><i class="far fa-address-book nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-dumbbell nav-icons"></i>
-                                </a>
+                                <a class="nav-link" href="#"><i class="fas fa-dumbbell nav-icons"></i></a>
                             </li>
                         @endguest
                     </ul>
@@ -103,8 +97,21 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
+        @auth    
+            <footer>
+                <div id="footer-menu" class="d-block d-md-none">
+                    <!--class="d-block d-sm-none"-->
+                    <ul>
+                        <li><a href="/home"><i class="fas fa-home nav-icons"></i></a></li>
+                        <li><a href="#"><i class="far fa-address-book nav-icons"></i></a></li>
+                        <li><a href="#"><i class="fas fa-dumbbell nav-icons"></i></a></li>
+                        <!--<li><a href="#header">TOPへ</a></li>-->
+                    </ul>
+                </div>
+            </footer>
+        @endauth
         </main>
     </div>
     

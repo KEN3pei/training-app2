@@ -15,7 +15,9 @@
                         @endif
                     </div>
                     <div class="t-contents">
-                        <img src="https://www.gravatar.com/avatar/{{ $image }}">
+                        <a href="https://en.gravatar.com/">
+                            <img src="https://www.gravatar.com/avatar/{{ $image }}">
+                        </a>
                         <div class="d-inline-block">
                             <p>{{ $auth->name }}</p>
                     @if(!$auth_training == null)

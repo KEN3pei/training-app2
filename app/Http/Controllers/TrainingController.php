@@ -32,7 +32,6 @@ class TrainingController extends Controller
         $image = md5( strtolower( trim( "$auth_email " )));
         
         $trainings = $this->index();
-        
         $auth_training = $this->get_today_training($month);
         
         $now = substr(Carbon::now(), 0, 7);
@@ -139,8 +138,11 @@ class TrainingController extends Controller
     //------------------
     public function search(Request $request) {
         
+        // $this->validate($request, Training::$rules);
         $body = $request->body;
-        
+        if($body == null){
+            return redirect('/home');
+        }
         return redirect('/home?body='."$body");;
     }
     

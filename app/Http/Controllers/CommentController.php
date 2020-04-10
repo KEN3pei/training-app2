@@ -13,10 +13,16 @@ class CommentController extends Controller
         
         $get = $_GET['id'];
         $training = Training::find($get);
-        foreach($training->users as $user){
-            $comments[] = $user->pivot->body;
+        $v = $training->users;
+        // dd($v);
+        if(count($v) == 0){
+            $comments = null;
+        }else{
+            foreach($training->users as $user){
+                $comments[] = $user->pivot->body;
+            }
         }
-        // dd($comments);
+        // dd($training->user);
         
         return view('comment_list', ['training' => $training, 'comments' => $comments]);
     }

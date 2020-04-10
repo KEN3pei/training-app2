@@ -46,9 +46,10 @@ Route::post('/training/home/search', 'TrainingController@search');
 // Route::post('/home', 'HomeController@index')->name('home');
 Route::get('/training/comment', 'CommentController@index');
 Route::post('/training/comment', 'CommentController@index');
-Route::get('/training/commentlist', 'CommentController@add');
-Route::post('/training/commentlist', 'CommentController@add');
 Route::get('/training/comment/create', 'CommentController@create');
 Route::post('/training/comment/create', 'CommentController@create');
 Route::get('/training/comment/delete', 'CommentController@delete');
 Route::post('/training/comment/delete', 'CommentController@delete');
+
+Route::get('/training/commentlist', 'CommentController@add');
+Route::post('/training/commentlist', 'CommentController@add');

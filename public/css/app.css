@@ -7904,20 +7904,20 @@ li {
   text-align: center;
   position: relative;
 }
-table tr{
+#calendar table tr{
   border-bottom: 1px solid #808080;
 }
-table th{
+#calendar table th{
   padding: 10px 0;
 }
-table td a{
+#calendar table td a{
   padding: 10px 0;
 }
-table a{
+#calendar table a{
   display: block;
   color: #808080;
 }
-table a:hover {
+#calendar table a:hover {
   background-color: #F4A460;
   cursor: pointer;
 }
@@ -7932,6 +7932,9 @@ table a:hover {
 }
 .traininglist-section {
   border-bottom: 1px solid #808080;
+}
+.search-training input[type="text"]{
+  width: 83%;
 }
  /*comment_list.blade.phpのレイアウト*/
 .comment_container{
@@ -7986,7 +7989,12 @@ input[type="submit"]:hover {
     .scroll {
       overflow-y: auto;
     }
- }
+    .search-training input[type="text"], 
+    .create-training input[type="text"],
+    .edit-training input[type="text"] {
+      width: 85%;
+    }
+ }    
 @media (min-width:768px){
     .height-fixed {
       height: 75vh;

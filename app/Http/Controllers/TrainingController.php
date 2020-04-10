@@ -32,6 +32,7 @@ class TrainingController extends Controller
         $image = md5( strtolower( trim( "$auth_email " )));
         
         $trainings = $this->index();
+        
         $auth_training = $this->get_today_training($month);
         
         $now = substr(Carbon::now(), 0, 7);
@@ -106,7 +107,7 @@ class TrainingController extends Controller
     //-----------------
     // 投稿の削除
     //-----------------
-    public function delete(Request $request){
+    public function delete(Request $request) {
         
         $training = Training::find($request->id);
         $training->delete();
@@ -118,14 +119,30 @@ class TrainingController extends Controller
         return redirect('/home');
     }
     
-    //------------------
-    // 投稿の一覧を表示
-    //------------------
-    public function index(){
+    // -----------------------
+    // 投稿の一覧表示
+    // -----------------------
+    public function index() {
         
-        $trainings = Training::orderBy('date', 'desc')->get();
-        // dd($count);
+        if(filter_input(INPUT_GET, 'body')){
+            $body = $_GET['body'];
+            $trainings = Training::where('body', 'LIKE', "%$body%")->get();
+        }else{
+            $trainings = Training::orderBy('date', 'desc')->get();
+        }
+        
         return $trainings;
     }
+    
+    //------------------
+    // 投稿の検索
+    //------------------
+    public function search(Request $request) {
+        
+        $body = $request->body;
+        
+        return redirect('/home?body='."$body");;
+    }
+    
     
 }

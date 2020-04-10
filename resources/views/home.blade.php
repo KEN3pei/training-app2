@@ -31,11 +31,13 @@
                             </form>
                         </div>   
                     </div>    
+                    <div class="edit-training">
                         <form action="{{ action('TrainingController@edit', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
                             <input type="text" name="body">
                             <input type="submit" value="編集">
                             @csrf
                         </form>
+                    </div>    
                     @else
                             <p>投稿はありません</p>
                         </div>
@@ -71,7 +73,7 @@
                     @endforeach
                 </table>
             </div>
-            <div>
+            <div class="create-training">
                 <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">
                     <input type="text" name="new_training">
                     <input type="submit" value="投稿">
@@ -80,9 +82,11 @@
             </div>
         </div>
         <div class="col-md-4 second-contents">
-            <div>
-                <form>
-                    <input type=text>
+            <div class="search-training">
+                <form action="{{ action('TrainingController@search') }}" method="post" enctype="multipart/form-data">
+                    <input type="text" name="body">
+                    <input type="submit" value="検索">
+                    @csrf
                 </form>
             </div>
             <div class="row height-fixed scroll">

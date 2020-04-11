@@ -17,12 +17,12 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
-        // $user = User::find(1)->favorite_users;
-        // foreach ($user->trainings as $training) {
-        //     // dd($training->pivot);
-        //     $comments[] = $training->pivot->body;
+        // $user = User::find(1);
+        // foreach ($user->favorite_trainings as $training) {
+        //     dd($training->pivot);
+        //     // $trainings[] = $training;
         // }
-        // dd($user);
+        // dd($training);
         
         $calendar_c = app()->make('App\Http\Controllers\CalendarController');
         $month = $calendar_c->getMonth();
@@ -33,7 +33,7 @@ class TrainingController extends Controller
         
         $trainings = $this->index();
         $auth_training = $this->get_today_training($month);
-        
+        // dd($auth_training);
         $now = substr(Carbon::now(), 0, 7);
         // dd($now);
         //様々な値を表示させようとするとviewに渡す変数が増えてしまい整理できない

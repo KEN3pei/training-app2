@@ -36,20 +36,30 @@ Route::group(['prefix' => 'login'], function() {
 
 Auth::routes();
 
-Route::get('/home', 'TrainingController@add')->name('home');
-Route::post('/home', 'TrainingController@add')->name('home');
-Route::post('/training/home/create', 'TrainingController@create');
-Route::post('/training/home/edit', 'TrainingController@edit');
-Route::post('/training/home/delete', 'TrainingController@delete');
-Route::post('/training/home/search', 'TrainingController@search');
-
+Route::group(['prefix' => 'home'], function() {
+    Route::get('/', 'TrainingController@add')->name('home');
+    Route::post('/', 'TrainingController@add')->name('home');
+    Route::post('/create', 'TrainingController@create');
+    Route::post('/edit', 'TrainingController@edit');
+    Route::post('/delete', 'TrainingController@delete');
+    Route::post('/search', 'TrainingController@search');
+});
 // Route::post('/home', 'HomeController@index')->name('home');
-Route::get('/training/comment', 'CommentController@index');
-Route::post('/training/comment', 'CommentController@index');
-Route::get('/training/comment/create', 'CommentController@create');
-Route::post('/training/comment/create', 'CommentController@create');
-Route::get('/training/comment/delete', 'CommentController@delete');
-Route::post('/training/comment/delete', 'CommentController@delete');
 
-Route::get('/training/commentlist', 'CommentController@add');
-Route::post('/training/commentlist', 'CommentController@add');
+Route::group(['prefix' => 'training'], function() {
+    Route::get('/comment', 'CommentController@index');
+    Route::post('/comment', 'CommentController@index');
+    Route::get('/comment/create', 'CommentController@create');
+    Route::post('/comment/create', 'CommentController@create');
+    Route::get('/comment/delete', 'CommentController@delete');
+    Route::post('/comment/delete', 'CommentController@delete');
+    
+    Route::get('/commentlist', 'CommentController@add');
+    Route::post('/commentlist', 'CommentController@add');
+});
+
+Route::get('/favorite/attach', 'FavoriteController@attach');
+Route::post('/favorite/attach', 'FavoriteController@attach');
+Route::get('/favorite/detach', 'FavoriteController@detach');
+Route::post('/favorite/detach', 'FavoriteController@detach');
+

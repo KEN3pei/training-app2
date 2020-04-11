@@ -29,6 +29,6 @@ class Training extends Model
     
     public function favorite_users()
     {
-        return $this->belongsToMany('App\Models\User', 'favorites', 'user_id', 'training_id');
+        return $this->belongsToMany('App\Models\User', 'favorites', 'training_id', 'user_id');
     }
 }

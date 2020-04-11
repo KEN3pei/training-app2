@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Training', 'comments')->withPivot('body');
     }
+    
+    public function favorite_trainings()
+    {
+        return $this->belongsToMany('App\Models\User', 'favorites', 'training_id', 'user_id');
+    }
 }

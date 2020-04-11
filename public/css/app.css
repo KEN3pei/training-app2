@@ -7931,8 +7931,18 @@ li {
 .updatetime {
   display: inline-block;
 }
+/*iconまわり*/
 .today-comment {
   font-size: 22px;
+}
+.favo {
+  font-size: 22px;
+}
+.link-favo {
+  color: #FF69B4;
+}
+.link-unfavo {
+  color: #808080;
 }
 .traininglist-section {
   border-bottom: 1px solid #808080;
@@ -7988,13 +7998,11 @@ input[type="submit"]:hover {
 
 /*footerのcss*/
 footer {
-    /*position: fixed;*/
     width: 100%;
     background-color: #F4A460;
     left: 0;
     z-index: 100;
     padding-top: 10px;
-    /*padding: 20px 0;*/
     position: absolute;/*←絶対位置*/
     bottom: 0; /*下に固定*/
 }

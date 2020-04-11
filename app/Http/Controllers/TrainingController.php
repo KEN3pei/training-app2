@@ -17,12 +17,12 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
-        // $user = User::find(1);
+        // $user = User::find(1)->favorite_users;
         // foreach ($user->trainings as $training) {
         //     // dd($training->pivot);
         //     $comments[] = $training->pivot->body;
         // }
-        // dd($comments);
+        // dd($user);
         
         $calendar_c = app()->make('App\Http\Controllers\CalendarController');
         $month = $calendar_c->getMonth();

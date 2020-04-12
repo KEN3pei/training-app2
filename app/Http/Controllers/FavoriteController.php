@@ -27,15 +27,15 @@ class FavoriteController extends Controller
             return back();
         }
         
-        // 1投稿あたりのいいねの数
-        public function count_favorites($trainingId) {
+        // // 1投稿あたりのいいねの数
+        // public function count_favorites($trainingId) {
             
-            // dd($trainingId);
-            $users = $trainingId->favorite_users;
-            dd($users);
-            $count = count($users);
-            // dd($count);
-            return $count;
-        }
+        //     // dd($trainingId);
+        //     $users = $trainingId->favorite_users;
+        //     dd($users);
+        //     $count = count($users);
+        //     // dd($count);
+        //     return $count;
+        // }
         
 }

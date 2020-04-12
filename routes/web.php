@@ -44,7 +44,6 @@ Route::group(['prefix' => 'home'], function() {
     Route::post('/delete', 'TrainingController@delete');
     Route::post('/search', 'TrainingController@search');
 });
-// Route::post('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'training'], function() {
     Route::get('/comment', 'CommentController@index');

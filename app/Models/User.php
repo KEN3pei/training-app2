@@ -58,13 +58,8 @@ class User extends Authenticatable
     // favoritesが存在するか確認する
     public function exist_favo($trainingId) {
         
-        $user_id = Auth::user()->id;
-        // dd($trainingId);
-        // $trainingId = 5;
-        // $exist = User::find($trainingId)->favorite_trainings()->where('user_id', $user_id)->exists();
-        // $exist = Training::find($trainingId)->favorite_users()->where('user_id', $user_id)->exists();
-        $exist = $this->favorite_trainings()->where('training_id',$trainingId)->exists();
-        
+        // wherePivotを使った方が中間テーブルでフィルタリングしているイメージがしやすいのでこれをつかっている
+        $exist = $this->favorite_trainings()->wherePivot('training_id', $trainingId)->exists();
         // dd($exist);
         if($exist){
             return true;

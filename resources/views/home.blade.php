@@ -30,10 +30,22 @@
                             <!--この投稿にfavoriteがついている時-->
                             <!--$auth_training->idを引数にして判定-->
                             @if(Auth::user()->exist_favo($auth_training->id))
-                                <a href="#" class="link-favo favo pl-4"><i class="fas fa-heart"></i></a>
+                                <a href="/favorite/detach?id={{$auth_training->id}}" class="link-favo favo pl-4" method="post" enctype="multipart/form-data">
+                                    <i class="fas fa-heart"></i></a>
+                                @if($count = count($auth_training->favorite_users))
+                                <a>{{ $count }}</a>
+                                @else
+                                <a>0</a>
+                                @endif  
                             <!--ついていない時-->
                             @else
-                                <a href="#" class="link-unfavo favo pl-4"><i class="fas fa-heart"></i></a>
+                                <a href="/favorite/attach?id={{$auth_training->id}}" class="link-unfavo favo pl-4" method="post" enctype="multipart/form-data">
+                                    <i class="fas fa-heart"></i></a>
+                                @if($count = count($auth_training->favorite_users))
+                                <a>{{ $count }}</a>
+                                @else
+                                <a>0</a>
+                                @endif     
                             @endif
                             <form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $auth_training->id]) }}" method="post" enctype="multipart/form-data">
                                 <input type="submit" value="削除">
@@ -53,6 +65,7 @@
                         </div>
                     </div>    
                     @endif
+                    
                 </div>
                 <!--<div>-->
                 <!--    <form action="{{ action('TrainingController@create') }}" method="post" enctype="multipart/form-data">-->
@@ -111,17 +124,29 @@
                             <a href="/training/comment?id={{ $training->id }}" class="today-comment ml-4"><i class="far fa-comment"></i></a>
                             <!--この投稿にfavoriteがついている時-->
                             <!--$auth_training->idを引数にして判定-->
-                            @if(Auth::user()->exist_favo($training->id))
-                                <a href="#" class="link-favo favo pl-4"><i class="fas fa-heart"></i></a>
-                            <!--ついていない時-->
-                            @else
-                                <a href="#" class="link-unfavo favo pl-4"><i class="fas fa-heart"></i></a>
-                            @endif
+                                @if(Auth::user()->exist_favo($training->id))
+                                    <a href="/favorite/detach?id={{$training->id}}" class="link-favo favo pl-4"><i class="fas fa-heart"></i></a>
+                                    @if($count = count($training->favorite_users))
+                                    <a>{{ $count }}</a>
+                                    @else
+                                    <a>0</a>
+                                    @endif   
+                                <!--ついていない時-->
+                                @else
+                                    <a href="/favorite/attach?id={{$training->id}}" class="link-unfavo favo pl-4"><i class="fas fa-heart"></i></a>
+                                    @if($count = count($training->favorite_users))
+                                    <a>{{ $count }}</a>
+                                    @else
+                                    <a>0</a>
+                                    @endif
+                                @endif
+                            
                             <!--{{ $training->id }}    -->
                             <!--<form class="d-inline-block ml-4" action="{{ action('TrainingController@delete', ['id' => $training->id]) }}" method="post" enctype="multipart/form-data">-->
                             <!--    <input type="submit" value="削除">-->
                             <!--    @csrf-->
                             <!--</form>-->
+                            
                         </li>
                     @endforeach
                 @endif

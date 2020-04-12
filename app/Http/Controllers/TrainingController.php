@@ -17,25 +17,28 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
-        // $user = User::find(1);
+        // $user = Auth::user()->favorite_trainings;
+        // $user = User::find(1)->favorite_trainings;
         // foreach ($user->favorite_trainings as $training) {
         //     dd($training->pivot);
         //     // $trainings[] = $training;
         // }
-        // dd($training);
+        // dd($user);
         
         $calendar_c = app()->make('App\Http\Controllers\CalendarController');
         $month = $calendar_c->getMonth();
         $weeks = $calendar_c->calendar($month);
         $auth = Auth::user();
+        if($auth == null){
+            return redirect('/');
+        }
         $auth_email = $auth->email;
         $image = md5( strtolower( trim( "$auth_email " )));
         
         $trainings = $this->index();
         $auth_training = $this->get_today_training($month);
-        // dd($auth_training);
+        // dd($training);
         $now = substr(Carbon::now(), 0, 7);
-        // dd($now);
         //様々な値を表示させようとするとviewに渡す変数が増えてしまい整理できない
         return view('home', [
             'image' => $image, 
@@ -59,7 +62,7 @@ class TrainingController extends Controller
             $today = substr(Carbon::today(), 0, 10);
         }
         $auth = Auth::user();
-        $auth_training = Training::where("user_id", $auth->id)->where("date", 'LIKE', "%{$today}%")->first();
+        $auth_training = Training::orderBy('date', 'desc')->where("user_id", $auth->id)->where("date", 'LIKE', "%{$today}%")->first();
         
         return $auth_training;
     }

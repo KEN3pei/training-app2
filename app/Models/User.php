@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Training;
 
 class User extends Authenticatable
@@ -43,9 +44,28 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Training');
     }
     
-    //中間テーブルおためし
+    //中間テーブル
     public function trainings()
     {
         return $this->belongsToMany('App\Models\Training', 'comments')->withPivot('body');
+    }
+    
+    public function favorite_trainings()
+    {
+        return $this->belongsToMany('App\Models\Training', 'favorites', 'user_id', 'training_id');
+    }
+    
+    // favoritesが存在するか確認する
+    public function exist_favo($trainingId) {
+        
+        // wherePivotを使った方が中間テーブルでフィルタリングしているイメージがしやすいのでこれをつかっている
+        $exist = $this->favorite_trainings()->wherePivot('training_id', $trainingId)->exists();
+        // dd($exist);
+        if($exist){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
 }

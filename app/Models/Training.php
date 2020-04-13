@@ -26,4 +26,20 @@ class Training extends Model
     {
         return $this->belongsToMany('App\Models\User', 'comments')->withPivot('body');
     }
+    
+    public function favorite_users()
+    {
+        return $this->belongsToMany('App\Models\User', 'favorites', 'training_id', 'user_id');
+    }
+    
+    // // 1投稿あたりのいいねの数
+    // public function count_favorites() {
+        
+    //     // $trainingId = 6;
+    //     $uses = self::favorite_users();
+    //     $count = count($uses);
+    //     // dd($trainingId);
+        
+    //     return $count;
+    // }
 }

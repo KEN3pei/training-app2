@@ -69,7 +69,7 @@ class LoginController extends Controller
         if($user == null){
             //$userがなかった時の処理
             $user = $this->createUserBySNS($gUser);
-            dd($user);
+            // dd($user);
         }
         \Auth::login($user, true);
         return redirect('/home');
@@ -91,6 +91,7 @@ class LoginController extends Controller
         // $x = "redirect";
         // dd($x);
         $gUser = Socialite::driver('twitter')->user();
+        // dd($gUser);
         //validationをかけている
         if($gUser->name == null){
             return "twitterにUsernameが設定されていません";

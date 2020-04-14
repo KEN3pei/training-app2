@@ -7871,10 +7871,13 @@ li {
   list-style: none;
 }
 
-.training-contents {
+.training-contents{
   background-color: #C0C0C0;
 }
-#home-container {
+#admin-main {
+  background-color: #C0C0C0;
+}
+#home-container, .admin-container {
   background-color: #fff;
 }
 
@@ -7994,6 +7997,9 @@ input[type="submit"]:hover {
 /*admin画面*/
 #admin-section th {
   padding: 0 10px;
+}
+table tr{
+  border-bottom: 1px solid #808080;
 }
 
 /*footerのcss*/

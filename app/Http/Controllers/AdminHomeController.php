@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AdminHomeController extends Controller
 {
@@ -24,9 +25,18 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        return view('admin_auth.home');
+        $all_user = User::all();
+        // dd($all_user);
+        
+        return view('admin_auth.home', ['users' => $all_user]);
     }
     
-    
+    public function user_delete() 
+    {
+        
+        
+        Auth::logout();
+        return redirect('/login');
+    }
     
 }

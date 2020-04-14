@@ -17,9 +17,7 @@ class ProfileController extends Controller
     
     public function ondeletefrag()
     {
-        
         //まずアラートを出したい
-        //ユーザーのフラグをtrueに変える
         $user = Auth::user();
         $user->deletefrag = "true";
         $user->save();

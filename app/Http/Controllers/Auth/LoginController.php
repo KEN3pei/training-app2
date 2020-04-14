@@ -44,8 +44,6 @@ class LoginController extends Controller
     //-------------------------------------------------
     public function redirectToGoogle()
     {
-        // $x = "redirect";
-        // dd($x);
         return Socialite::driver('google')->redirect();
     }
     //-------------------------------------------------
@@ -56,21 +54,11 @@ class LoginController extends Controller
         //ユーザー情報を取得
         $gUser = Socialite::driver('google')->stateless()->user();
         // dd($gUser);
-        //validationをかけている
-        if($gUser->name == null){
-            return "googleアカウントにUsernameが設定されていません";
-        }
-        if($gUser->email == null){
-            return "googleアカウントにemailが設定されていません";
-        }
-        //テーブルから一致するものを探す
-        $user = User::where('email', $gUser->email)->first();
-        // dd($user);
-        if($user == null){
-            //$userがなかった時の処理
-            $user = $this->createUserBySNS($gUser);
-            // dd($user);
-        }
+        $gUser->name ?? "googleアカウントにUsernameが設定されていません";
+        $gUser->email ?? "googleアカウントにemailが設定されていません";
+        
+        $user = $this->checkDeleteFrag($gUser);
+        
         \Auth::login($user, true);
         return redirect('/home');
     }
@@ -79,38 +67,28 @@ class LoginController extends Controller
     //---------------------------------------------------
     public function redirectToTwitter()
     {
-        // $x = "redirect";
-        // dd($x);
         return Socialite::driver('twitter')->redirect();
     }
     
     //-------------------------------------------------
-    // Googleログイン判定
+    // Twitterログイン判定
     //-------------------------------------------------
     public function handleTwitterCallback(){
-        // $x = "redirect";
-        // dd($x);
+        
         $gUser = Socialite::driver('twitter')->user();
         // dd($gUser);
-        //validationをかけている
-        if($gUser->name == null){
-            return "twitterにUsernameが設定されていません";
-        }
-        if($gUser->email == null){
-            return "twitterにemailが設定されていません";
-        }
+        $gUser->name ?? "twitterにUsernameが設定されていません";
+        $gUser->email ?? "twitterにUsernameが設定されていません";
         
-        $user = User::where('email', $gUser->email)->first();
-        // dd($user);
-        //$userがなかったら$gUserをもとに新しく作る
-        if($user == null){
-            $user = $this->createUserBySNS($gUser);
-            // dd($user);
-        }
+        $user = $this->checkDeleteFrag($gUser);
+        
         \Auth::login($user, true);
         return redirect('/home');
     }
     
+    //------------------------------------------------
+    // ユーザーの作成
+    //------------------------------------------------
     public function createUserBySNS($gUser)
     {
         
@@ -119,6 +97,28 @@ class LoginController extends Controller
             'email'    => $gUser->email,
             'password' => \Hash::make(uniqid()),
         ]);
+        return $user;
+    }
+    
+    //------------------------------------------------
+    // deleteフラグのチェック
+    //------------------------------------------------
+    public function checkDeleteFrag($gUser) {
+        
+        $check_user = User::where('email', $gUser->email)->where('deletefrag', "true")->first();
+        if(!$check_user == null){
+            // dd($check_user);
+            $user = User::find($check_user->id);
+            $user->deletefrag = "false";
+            $user->save();
+        }else{
+            $user = User::where('email', $gUser->email)->where('deletefrag', "false")->first();
+            // dd($user);
+            if($user == null){
+            $user = $this->createUserBySNS($gUser);
+            // dd($user);
+            }
+        }
         return $user;
     }
 }

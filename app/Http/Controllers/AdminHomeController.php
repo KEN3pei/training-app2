@@ -26,4 +26,7 @@ class AdminHomeController extends Controller
     {
         return view('admin_auth.home');
     }
+    
+    
+    
 }

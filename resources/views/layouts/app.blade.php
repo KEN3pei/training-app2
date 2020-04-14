@@ -86,7 +86,7 @@
                                 <a class="nav-link" href="/home"><i class="fas fa-home nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="far fa-address-book nav-icons"></i></a>
+                                <a class="nav-link" href="home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fas fa-dumbbell nav-icons"></i></a>

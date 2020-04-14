@@ -17,7 +17,7 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
-        // $user = Auth::user()->favorite_trainings;
+        // $user = Auth::user()->id;
         // $user = User::find(1)->favorite_trainings;
         // foreach ($user->favorite_trainings as $training) {
         //     dd($training->pivot);

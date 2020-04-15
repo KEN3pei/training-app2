@@ -7874,9 +7874,6 @@ li {
 .training-contents{
   background-color: #C0C0C0;
 }
-#admin-main {
-  background-color: #C0C0C0;
-}
 #home-container, .admin-container {
   background-color: #fff;
 }
@@ -7927,6 +7924,15 @@ li {
 #calendar table a:hover {
   background-color: #F4A460;
   cursor: pointer;
+}
+.calendar_arrow {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0 5px;
+  color:  #F4A460;
+}
+.calendar_arrow:hover {
+  color:  #F4A460;
 }
 .calendar-today {
   background-color: #F4A460;
@@ -7995,12 +8001,23 @@ input[type="submit"]:hover {
   animation: 1s flash;
 }
 /*admin画面*/
+#admin-main {
+  background-color: #C0C0C0;
+}
 #admin-section th {
   padding: 0 10px;
+}
+#admin-users > td{
+  padding: 0 15px;
+}
+#admin-columns > th{
+  text-align: center;
 }
 table tr{
   border-bottom: 1px solid #808080;
 }
+/*profile画面*/
+
 
 /*footerのcss*/
 footer {
@@ -8065,4 +8082,10 @@ footer li a:hover{
     .scroll {
       overflow-y: auto;
     }
+    .profile-section {
+      margin: 0 auto;
+      width: 80%;
+      padding-bottom: 15px;
+    }
+    
 }

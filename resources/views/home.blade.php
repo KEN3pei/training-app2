@@ -7,19 +7,19 @@
         <div class="col-md-8">
             <div id="training-section1">
                 <div>
-                    <div>
-                        <a href="?date={{ $month }}&method=submonth">&lt;</a>
-                        <b>{{ $month }}</b>
-                        @if(!($month == $now))
-                        <a href="?date={{ $month }}&method=addmonth">&gt;</a>
-                        @endif
+                    <div class="pb-4">
+                        <!--<a href="?date={{ $month }}&method=submonth" class="calendar_arrow">&lt;</a>-->
+                        <!--<b>{{ $month }}</b>-->
+                        <!--@if(!($month == $now))-->
+                        <!--<a href="?date={{ $month }}&method=addmonth" class="calendar_arrow">&gt;</a>-->
+                        <!--@endif-->
                     </div>
                     <div class="t-contents">
                         <a href="https://en.gravatar.com/">
                             <img src="https://www.gravatar.com/avatar/{{ $image }}">
                         </a>
-                        <div class="d-inline-block">
-                            <p>{{ $auth->name }}</p>
+                        <div class="d-inline-block pl-5">
+                            <p class="font-weight-bold">{{ $auth->name }}</p>
                     @if(!$auth_training == null)
                             <p>{{ $auth_training->body }}</p>
                         </div>
@@ -76,10 +76,10 @@
                 <!--</div>-->
             </div>
             <div id="calendar" class="mt-2 mb-4">
-                <a href="?date={{ $month }}&method=submonth">&lt;</a>
+                <a href="?date={{ $month }}&method=submonth" class="calendar_arrow">&lt;</a>
                 <b>{{ $month }}</b>
                 @if(!($month == $now))
-                <a href="?date={{ $month }}&method=addmonth">&gt;</a>
+                <a href="?date={{ $month }}&method=addmonth" class="calendar_arrow">&gt;</a>
                 @endif
                 <table>
                     <tr>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -31,12 +31,23 @@ class AdminHomeController extends Controller
         return view('admin_auth.home', ['users' => $all_user]);
     }
     
-    public function user_delete() 
+    public function delete(Request $request) 
     {
-        
-        
-        Auth::logout();
-        return redirect('/login');
+        // dd($request->id);
+        $user = User::find($request->id);
+        // dd($user);
+        $comments = $user->trainings;
+        foreach($comments as $comment){
+            $pivot = $comment->pivot;
+            $pivot->delete();
+        }
+        $trainings = $user->training;
+        foreach($trainings as $training){
+            $training->delete();
+        }
+        $user->delete();
+
+        return back();
     }
     
 }

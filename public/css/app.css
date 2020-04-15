@@ -7866,9 +7866,13 @@ a.text-dark:focus, a.text-dark:hover {
 main {
   position: relative;
   box-sizing: border-box;
+  
 }
 li {
   list-style: none;
+}
+.nav-icons {
+  color: #D2691E;
 }
 
 .training-contents{
@@ -7883,6 +7887,10 @@ li {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
 }
 .nav-icons {
+  font-size: 28px;
+  padding-right: 5px;
+}
+.nav-icons-center {
   font-size: 28px;
   padding-right: 5px;
 }
@@ -8025,29 +8033,30 @@ table tr{
 /*footerのcss*/
 footer {
     width: 100%;
-    background-color: #F4A460;
+    /*background-color: #D2691E;*/
     left: 0;
     z-index: 100;
-    padding-top: 10px;
+    border-top: 1px solid #D2691E;
+    padding-top: 0;
     position: absolute;/*←絶対位置*/
     bottom: 0; /*下に固定*/
 }
 footer ul{
     display: flex;
-    padding-left: 8px;
+    /*padding-left: 8px;*/
 }
 footer li{
-    width: 33%;
+    width: 34%;
     text-align: center;
-    background-color: #1E1E1E;
+    background-color: #fff;
 }
 footer li:nth-child(even){
-    background-color: #333;
+    background-color: #808080;
 }
 footer li a{
     width: 100%;
     display: block;
-    padding: 25px 0;
+    padding: 20px 0;
     color: #EEE;
 }
 footer li a:hover{
@@ -8067,7 +8076,7 @@ footer li a:hover{
     }
     main {
       min-height: 80vh;
-      padding-bottom: 100px;
+      padding-bottom: 80px;
     }
     .search-training input[type="text"], 
     .create-training input[type="text"],

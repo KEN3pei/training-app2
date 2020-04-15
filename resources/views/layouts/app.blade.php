@@ -86,9 +86,9 @@
                     <!--class="d-block d-sm-none"-->
                     <ul>
                         <li><a href="/home"><i class="fas fa-home nav-icons"></i></a></li>
-                        <li><a href="home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons"></i></a></li>
+                        <li><a href="home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons-center"></i></a></li>
                         <li><a href="#"><i class="fas fa-dumbbell nav-icons"></i></a></li>
-                        <!--<li><a href="#header">TOPへ</a></li>-->
+                        <!--<li></li>-->
                     </ul>
                 </div>
             </footer>

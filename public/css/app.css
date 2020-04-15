@@ -7986,6 +7986,9 @@ li {
   margin: 15px 0;
   width: 90%;
 }
+.logout_delete {
+  width: 90%;
+}
 
 input[type="submit"] {
   text-align: center;
@@ -8071,7 +8074,7 @@ footer li a:hover{
     .edit-training input[type="text"] {
       width: 85%;
     }
-    .tr-user {
+    .tr-user, .logout_delete{
       width: 100%;
     }
  }    

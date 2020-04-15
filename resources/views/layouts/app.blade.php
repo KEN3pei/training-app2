@@ -41,15 +41,6 @@
                             <i class="fas fa-dumbbell nav-icons"></i>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
                 @endguest
                 </ul>
                 
@@ -73,16 +64,6 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/home"><i class="fas fa-home nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
@@ -105,7 +86,7 @@
                     <!--class="d-block d-sm-none"-->
                     <ul>
                         <li><a href="/home"><i class="fas fa-home nav-icons"></i></a></li>
-                        <li><a href="#"><i class="far fa-address-book nav-icons"></i></a></li>
+                        <li><a href="home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons"></i></a></li>
                         <li><a href="#"><i class="fas fa-dumbbell nav-icons"></i></a></li>
                         <!--<li><a href="#header">TOPへ</a></li>-->
                     </ul>

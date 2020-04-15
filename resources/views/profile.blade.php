@@ -18,10 +18,23 @@
                         <p>Name :  　　　　{{ Auth::user()->name }}</p>
                         <p>投稿数 :　　　　{{ $count }}</p>
                          <!--//まずアラートを出したい-->
-                        <form class="d-inline-block ml-4 float-right" action="{{ action('ProfileController@ondeletefrag') }}" method="post" enctype="multipart/form-data">
-                            <input type="submit" value="削除">
-                            @csrf
-                        </form>
+                        <!--<form class="d-inline-block ml-4 float-right" action="{{ action('ProfileController@ondeletefrag') }}" method="post" enctype="multipart/form-data">-->
+                        <!--    <input type="submit" value="削除">-->
+                        <!--    @csrf-->
+                        <!--</form>-->
+                        </div>
+                        <div class="logout_delete">
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <form class="d-inline-block ml-4 float-right" action="{{ action('ProfileController@ondeletefrag') }}" method="post" enctype="multipart/form-data">
+                                <input type="submit" value="アカウント削除">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-1"></div>

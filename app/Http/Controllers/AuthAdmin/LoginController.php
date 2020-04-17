@@ -43,6 +43,7 @@ class LoginController extends Controller
     {
         //ログイン中userから管理者画面への侵入をここで阻止する
         $login_now_user = Auth::user();
+        // dd($login_now_user);
         if(!$login_now_user == null){
             return redirect('/');
         }   

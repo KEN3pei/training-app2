@@ -17,24 +17,11 @@ class TrainingController extends Controller
     //------------------
     public function add(){
         
-        // $user = Auth::user()->favorite_trainings;
-        // $user = User::find(1)->favorite_trainings;
-        // foreach ($user->favorite_trainings as $training) {
-        //     dd($training->pivot);
-        //     // $trainings[] = $training;
-        // }
-        // dd($user);
-        
         $calendar_c = app()->make('App\Http\Controllers\CalendarController');
         $month = $calendar_c->getMonth();
         $weeks = $calendar_c->calendar($month);
         $auth = Auth::user();
-        if($auth == null){
-            return redirect('/');
-        }
-        $auth_email = $auth->email;
-        $image = md5( strtolower( trim( "$auth_email " )));
-        
+        $image = $this->get_image();
         $trainings = $this->index();
         $auth_training = $this->get_today_training($month);
         // dd($training);
@@ -67,6 +54,21 @@ class TrainingController extends Controller
         return $auth_training;
     }
     
+    //--------------------------------
+    // 各ユーザーのimage取得
+    //--------------------------------
+    public function get_image() {
+        
+        $auth = Auth::user();
+        if($auth == null){
+            return redirect('/');
+        }
+        $auth_email = $auth->email;
+        $image = md5( strtolower( trim( "$auth_email " )));
+        
+        return $image;
+    }
+    
     //-----------------
     // 新規投稿
     //-----------------
@@ -81,7 +83,7 @@ class TrainingController extends Controller
         $auth_user_id = Auth::user()->id;
         $createtime = Carbon::now();
         // dd($createtime);
-        // カリキュラムではfillを使ってから保存しているがそれが適切なのかわからないため直接代入している
+        // カリキュラムではfillを使って保存しているがそれが適切なのかわからないため直接代入している
         $training->body = $new_training;
         $training->user_id = $auth_user_id;
         $training->date = $createtime;

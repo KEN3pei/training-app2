@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Training App</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Training App
                 </a>
                 <!--スマホサイズの時の見た目-->
                 <ul class="visible-xs iphone-size-header">
@@ -40,15 +40,6 @@
                         <a href="#">
                             <i class="fas fa-dumbbell nav-icons"></i>
                         </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
                     </li>
                 @endguest
                 </ul>
@@ -73,20 +64,10 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/home"><i class="fas fa-home nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="far fa-address-book nav-icons"></i></a>
+                                <a class="nav-link" href="home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fas fa-dumbbell nav-icons"></i></a>
@@ -105,9 +86,9 @@
                     <!--class="d-block d-sm-none"-->
                     <ul>
                         <li><a href="/home"><i class="fas fa-home nav-icons"></i></a></li>
-                        <li><a href="#"><i class="far fa-address-book nav-icons"></i></a></li>
+                        <li><a href="home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons-center"></i></a></li>
                         <li><a href="#"><i class="fas fa-dumbbell nav-icons"></i></a></li>
-                        <!--<li><a href="#header">TOPへ</a></li>-->
+                        <!--<li></li>-->
                     </ul>
                 </div>
             </footer>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="login">
   <div class="heading">
     <h2>Sign in</h2>

@@ -40,6 +40,6 @@ class ProfileController extends Controller
         //ログアウトさせる
         
         Auth::logout();
-        return redirect('home');
+        return redirect('/');
     }
 }

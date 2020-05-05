@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
     public function profile() {
         
+        
         $t_controller = app()->make('App\Http\Controllers\TrainingController');
         $image = $t_controller->get_image();
         $trainings = Auth::user()->training;
@@ -37,7 +38,8 @@ class ProfileController extends Controller
             $training->delete();
         }
         //ログアウトさせる
+        
         Auth::logout();
-        return redirect('/login');
+        return redirect('home');
     }
 }

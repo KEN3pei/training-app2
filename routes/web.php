@@ -37,7 +37,7 @@ Route::group(['prefix' => 'login'], function() {
 
 Auth::routes();
 
-Route::group(['prefix' => 'home', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'home'], function() {
     Route::get('/', 'TrainingController@add')->name('home');
     Route::post('/', 'TrainingController@add')->name('home');
     Route::post('/create', 'TrainingController@create');

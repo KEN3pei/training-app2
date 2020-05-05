@@ -51,6 +51,20 @@ Route::group(['prefix' => 'home'], function() {
     Route::post('/profile/delete', 'ProfileController@ondeletefrag');
 });
 
+// Route::group(['prefix' => 'home'], function() {
+//     Route::get('/', 'TrainingController@add')->name('home');
+//     Route::post('/', 'TrainingController@add')->name('home');
+//     Route::post('/create', 'TrainingController@create');
+//     Route::post('/edit', 'TrainingController@edit');
+//     Route::post('/delete', 'TrainingController@delete');
+//     Route::post('/search', 'TrainingController@search');
+    
+//     Route::get('/profile', 'ProfileController@profile');
+//     Route::post('/profile', 'ProfileController@profile');
+//     Route::get('/profile/delete', 'ProfileController@ondeletefrag');
+//     Route::post('/profile/delete', 'ProfileController@ondeletefrag');
+// });
+
 Route::group(['prefix' => 'training'], function() {
     Route::get('/comment', 'CommentController@index');
     Route::post('/comment', 'CommentController@index');

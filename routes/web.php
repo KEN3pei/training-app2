@@ -47,6 +47,7 @@ Route::group(['prefix' => 'home'], function() {
     
     Route::get('/profile', 'ProfileController@profile');
     Route::post('/profile', 'ProfileController@profile');
+    Route::get('/profile/delete', 'ProfileController@ondeletefrag');
     Route::post('/profile/delete', 'ProfileController@ondeletefrag');
 });
 

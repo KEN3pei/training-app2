@@ -49,7 +49,7 @@ Route::group(['prefix' => 'home'], function() {
     Route::get('/profile', 'ProfileController@profile');
     Route::post('/profile', 'ProfileController@profile');
     Route::get('/profile/delete', 'ProfileController@out');
-    Route::post('/profile/delete', 'ProfileController@ondeletefrag')->middleware('auth');
+    Route::post('/profile/delete', 'ProfileController@ondeletefrag');
 
 
 Route::group(['prefix' => 'training'], function() {

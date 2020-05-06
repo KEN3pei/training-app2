@@ -35,7 +35,7 @@ Route::group(['prefix' => 'login'], function() {
     Route::get('twitter/callback', 'Auth\LoginController@handleTwitterCallback');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::group(['prefix' => 'home'], function() {
     Route::get('/', 'TrainingController@add')->name('home');
@@ -44,12 +44,13 @@ Route::group(['prefix' => 'home'], function() {
     Route::post('/edit', 'TrainingController@edit');
     Route::post('/delete', 'TrainingController@delete');
     Route::post('/search', 'TrainingController@search');
-    
+});
+
     Route::get('/profile', 'ProfileController@profile');
     Route::post('/profile', 'ProfileController@profile');
-    // Route::get('/profile/delete', 'ProfileController@ondeletefrag');
+    Route::get('/profile/delete', 'ProfileController@out');
     Route::post('/profile/delete', 'ProfileController@ondeletefrag');
-});
+
 
 Route::group(['prefix' => 'training'], function() {
     Route::get('/comment', 'CommentController@index');
@@ -68,3 +69,5 @@ Route::post('/favorite/attach', 'FavoriteController@attach');
 Route::get('/favorite/detach', 'FavoriteController@detach');
 Route::post('/favorite/detach', 'FavoriteController@detach');
 
+
+Auth::routes();

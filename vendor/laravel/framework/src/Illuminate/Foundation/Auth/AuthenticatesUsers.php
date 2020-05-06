@@ -171,7 +171,7 @@ trait AuthenticatesUsers
      */
     protected function loggedOut(Request $request)
     {
-        //
+        return redirect('/profile');
     }
 
     /**

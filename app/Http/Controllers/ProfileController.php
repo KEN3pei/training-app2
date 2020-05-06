@@ -39,8 +39,14 @@ class ProfileController extends Controller
             $training->delete();
         }
         //ログアウトさせる
+        
         Auth::logout();
-        return redirect('/login');
+        if (Auth::check()) {
+            return buck();
+        }else{
+            return redirect('/login');
+        }
+        // return redirect('/login');
     }
   
 }

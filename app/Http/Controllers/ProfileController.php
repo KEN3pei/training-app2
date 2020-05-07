@@ -42,7 +42,7 @@ class ProfileController extends Controller
         
         Auth::logout();
     
-        return redirect('/login');
+        // return redirect('/login');
     }
   
 }

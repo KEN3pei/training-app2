@@ -155,10 +155,11 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
-        // dd($request);
         $this->guard()->logout();
 
         $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         return $this->loggedOut($request) ?: redirect('/');
     }
@@ -171,7 +172,7 @@ trait AuthenticatesUsers
      */
     protected function loggedOut(Request $request)
     {
-        return redirect('/');
+        //
     }
 
     /**

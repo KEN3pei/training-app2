@@ -10,10 +10,10 @@ class ProfileController extends Controller
     
     public function profile() {
         
-        
         $t_controller = app()->make('App\Http\Controllers\TrainingController');
         $image = $t_controller->get_image();
         $trainings = Auth::user()->training;
+        // dd($trainings);
         $count = count($trainings);
         
         return view('profile', ['count' => $count, 'image' => $image]);
@@ -41,12 +41,8 @@ class ProfileController extends Controller
         //ログアウトさせる
         
         Auth::logout();
-        if (Auth::check()) {
-            return buck();
-        }else{
-            return redirect('/login');
-        }
-        // return redirect('/login');
+    
+        return redirect('/login');
     }
   
 }

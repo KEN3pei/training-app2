@@ -1,7 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);
-@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
-* {
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);* {
   margin: 0;
   padding: 0;
 }
@@ -13,11 +10,10 @@ html {
 
 /*body {*/
 /*  background: transparent;*/
-  /* background-color: rgb(245, 179, 92); */
+/* background-color: rgb(245, 179, 92); */
 /*}*/
-
 body, input, button {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .login {
@@ -25,7 +21,7 @@ body, input, button {
   width: 400px;
   min-height: 400px;
   margin: 2% auto 0 auto;
-  background-color: rgb(245, 179, 92);
+  background-color: #f5b35c;
 }
 
 .login .heading {
@@ -42,7 +38,7 @@ body, input, button {
   text-shadow: 1px 1px 3px #23203b;
 }
 
-h3{
+h3 {
   color: rgba(255, 255, 255, 0.94);
   padding-bottom: 5px;
   text-shadow: 1px 1px 3px #23203b;
@@ -51,6 +47,7 @@ h3{
 .navbar-nav {
   float: right;
 }
+
 .nav-item {
   margin-right: 8px;
 }
@@ -81,8 +78,7 @@ h3{
   height: auto;
   border: none;
   outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background: none;
   border-radius: 0px;
   padding: 10px;
@@ -117,21 +113,13 @@ h3{
 
 .float {
   display: inline-block;
-  -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
   transition-property: transform;
-  transition-property: transform, -webkit-transform;
-  -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
 .float:hover, .float:focus, .float:active {
-  -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
 }
 
@@ -142,7 +130,6 @@ h3{
     font-size: 2em;
   }
 }
-
 @media only screen and (max-width: 1100px) {
   .login {
     margin-top: 2%;
@@ -150,7 +137,6 @@ h3{
     font-size: 1.7em;
   }
 }
-
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
   .login {
@@ -160,7 +146,6 @@ h3{
     min-height: 0;
   }
 }
-
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
   .login {
@@ -170,7 +155,6 @@ h3{
     min-height: 0;
   }
 }
-
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
   .login {
@@ -179,11 +163,11 @@ h3{
     font-size: 1em;
     min-height: 0;
   }
+
   .login h2 {
     margin-top: 0;
   }
 }
-
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {
   .login {
@@ -193,4 +177,3 @@ h3{
     min-height: 0;
   }
 }
-/*# sourceMappingURL=style.css.map */

@@ -155,6 +155,7 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
+        // dd($request);
         $this->guard()->logout();
 
         $request->session()->invalidate();
@@ -170,7 +171,7 @@ trait AuthenticatesUsers
      */
     protected function loggedOut(Request $request)
     {
-        //
+        return redirect('/profile');
     }
 
     /**

@@ -31,7 +31,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            <form class="d-inline-block ml-4 float-right" action="{{ action('ProfileController@ondeletefrag') }}" method="post" enctype="multipart/form-data">
+                            <form class="d-inline-block ml-4 float-right" action="{{ action('ProfileController@ondeletefrag') }}" method="POST" enctype="multipart/form-data">
                                 <input type="submit" value="アカウント削除">
                                 @csrf
                             </form>

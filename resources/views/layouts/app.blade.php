@@ -22,6 +22,8 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <!--fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!--vue.js-->
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 </head>
 <body>
     <div id="app">
@@ -67,7 +69,7 @@
                                 <a class="nav-link" href="/home"><i class="fas fa-home nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/home/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons"></i></a>
+                                <a class="nav-link" href="/profile?id={{Auth::user()->id}}"><i class="far fa-address-book nav-icons"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><i class="fas fa-dumbbell nav-icons"></i></a>
@@ -98,5 +100,6 @@
     
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src=" {{ mix('js/app.js') }} "></script>
 </body>
 </html>

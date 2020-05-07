@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    
     public function profile() {
         
         
@@ -40,6 +41,12 @@ class ProfileController extends Controller
         //ログアウトさせる
         
         Auth::logout();
-        return redirect('home');
+        if (Auth::check()) {
+            return buck();
+        }else{
+            return redirect('/login');
+        }
+        // return redirect('/login');
     }
+  
 }

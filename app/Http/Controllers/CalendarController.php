@@ -75,6 +75,4 @@ class CalendarController extends Controller
         return $month;
     }
         
-        
-        
 }

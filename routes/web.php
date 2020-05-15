@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\User;
 
 Route::get('/', function () {
     return redirect('login');
@@ -71,3 +72,10 @@ Route::post('/favorite/detach', 'FavoriteController@detach');
 
 
 Auth::routes();
+
+Route::get('/users', function () {
+    return User::all();
+    // return ['Ken','Mike','John','Lisa'];
+});
+
+

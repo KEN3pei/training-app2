@@ -9,9 +9,6 @@
 
     <title>Training App</title>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -20,7 +17,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-    <!--<link href="{{ asset('css/admin.css') }}" rel="stylesheet">-->
     <!--fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!--vue.js-->
@@ -96,10 +92,44 @@
             </footer>
         @endauth
         </main>
+        <!--<p>@{{msg}}</p>-->
+        <!--<li v-for ="user in users">@{{ user.name }}</li>-->
+        <!--<example-component></example-component>-->
+        <!--<hello-component></hello-component>-->
     </div>
     
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src=" {{ mix('js/app.js') }} "></script>
+  
+  <!--vue.js-->
+  <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>-->
+  <!--<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>-->
+  <script>
+
+    //  new Vue({
+    //   el: "#app",
+    //   data: {
+    //      msg: "Welcome",
+    //      users: []
+    //   },
+    //   methods: {
+    //      sayHello(){
+    //       this.msg = "Hello!";
+    //      }
+    //   },
+    //   created(){
+    //      //表示後にやりたいことはここに書ける
+    //      this.sayHello();
+    //      axios.get('/users')
+    //      .then(responce => this.users = responce.data)
+    //      .catch(error => {
+    //         console.info(error);
+    //         });
+    //     //  console.log(this.users);
+    //   }
+    //  });
+   </script>
 </body>
 </html>

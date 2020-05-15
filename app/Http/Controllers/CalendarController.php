@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Training;
+use App\Models\User;
 use Carbon\Carbon;
 
 class CalendarController extends Controller
@@ -28,9 +31,17 @@ class CalendarController extends Controller
             $c = substr(Carbon::now(), 0, 10);
             if($y_m_d === $c){
                 // dd($y_m_d);
-                $week .= '<td><a href="?today=' .$y_m_d. '" class="calendar-today">' .$day. '</a></td>';
+                if($this->checkTraining($y_m_d)){
+                    $week .= '<td><a href="?today=' .$y_m_d. '" class="calendar-today">' .$day. '</a><i class="fas fa-check-circle"></i></td>';
+                }else{
+                    $week .= '<td><a href="?today=' .$y_m_d. '" class="calendar-today">' .$day. '</a></td>';
+                }
             }else{
-                $week .= '<td><a href="?today=' .$y_m_d. '">' .$day. '</a></td>';
+                if($this->checkTraining($y_m_d)){
+                    $week .= '<td><a href="?today=' .$y_m_d. '">' .$day. '</a><i class="fas fa-check-circle"></i></td>';
+                }else{
+                    $week .= '<td><a href="?today=' .$y_m_d. '">' .$day. '</a></td>';
+                }
             }
             if(($dayOfWeek + $day)%7 == 0 ){
                 $weeks[] = '<tr>'.$week.'</tr>';
@@ -74,7 +85,17 @@ class CalendarController extends Controller
         
         return $month;
     }
+    
+    
+    //---------------------------------
+    // 日付ごとの投稿のチェック
+    //---------------------------------
+    public function checkTraining($y_m_d) {
         
+        $check = Training::where('user_id', Auth::user()->id)->where('date', 'LIKE', "%{$y_m_d}%")->exists();
+        // dd($check);
+        return $check;
         
+    }
         
 }

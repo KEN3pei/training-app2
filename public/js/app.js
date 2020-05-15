@@ -1737,10 +1737,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 // import axios from "axios"; 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -49683,7 +49679,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-Vue.component('hello-component', __webpack_require__(/*! ./components/HelloComponent.vue */ "./resources/js/components/HelloComponent.vue")["default"]);
+Vue.component('hello-component', __webpack_require__(/*! ./components/HelloComponent.vue */ "./resources/js/components/HelloComponent.vue")["default"]); // Vue.component('edit-component', require('./components/EditComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49691,19 +49688,8 @@ Vue.component('hello-component', __webpack_require__(/*! ./components/HelloCompo
  */
 
 var app = new Vue({
-  el: '#app' // data: {
-  //     count: 4,
-  //     numbers: [
-  //       1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-  //     ]
-  // }
-
-}); // const app2 = new Vue({
-//     el: '#app2',
-//     data: {
-//         // count: 8,
-//     },
-// });
+  el: '#app'
+});
 
 /***/ }),
 

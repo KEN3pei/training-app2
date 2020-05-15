@@ -60,6 +60,7 @@
                             @csrf
                         </form>
                     </div>    
+                     <!--<edit-component></edit-component>-->
                     @else
                             <p>投稿はありません</p>
                         </div>

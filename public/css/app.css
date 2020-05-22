@@ -21881,7 +21881,7 @@ li {
 input[type=text] {
   font: 15px/24px sans-serif;
   box-sizing: border-box;
-  width: 90%;
+  width: 85%;
   padding: 0.3em;
   transition: 0.3s;
   letter-spacing: 1px;

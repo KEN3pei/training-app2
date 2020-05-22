@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<!--<hello-component></hello-component>-->
 <div class="training-contents">
 <div class="container" id="home-container">
     <div class="row justify-content-center">
@@ -19,7 +20,10 @@
                             <img src="https://www.gravatar.com/avatar/{{ $image }}">
                         </a>
                         <div class="d-inline-block pl-5">
-                            <p class="font-weight-bold">{{ $auth->name }}</p>
+                            <!--Jsで変化あり-->
+                            <!--<button>click</button>-->
+                            
+                            <p class="font-weight-bold" id="user_name">{{ $auth->name }}</p>
                     @if(!$auth_training == null)
                             <p>{{ $auth_training->body }}</p>
                         </div>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!--<hello-component></hello-component>-->
 <div class="training-contents">
 <div class="container" id="home-container">
     <div class="row justify-content-center">
